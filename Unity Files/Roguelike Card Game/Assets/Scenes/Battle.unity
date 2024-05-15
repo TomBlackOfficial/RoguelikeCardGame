@@ -260,8 +260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -192}
-  m_SizeDelta: {x: 333, y: 168.4}
+  m_AnchoredPosition: {x: 0, y: -182.2}
+  m_SizeDelta: {x: 398.29, y: 168.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312675564
 MonoBehaviour:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_text: Deal 3 Damage to opposing creature for every Rarity Star it has.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53a6a5d2a435a4f2b9237479ee16a92b, type: 2}
-  m_sharedMaterial: {fileID: -5118814527009103204, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
+  m_sharedMaterial: {fileID: 4525499186105570185, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -311,8 +311,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38
-  m_fontSizeBase: 38
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -321,9 +321,9 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -4
+  m_characterSpacing: -2
   m_wordSpacing: 0
-  m_lineSpacing: -6
+  m_lineSpacing: -5
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 718943995}
   - component: {fileID: 718943994}
   m_Layer: 0
-  m_Name: Attack_Txt
+  m_Name: Damage_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,7 +800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.3, y: 301.6}
+  m_AnchoredPosition: {x: -12.4, y: 301.6}
   m_SizeDelta: {x: 75.19, y: 68.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718943994
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53a6a5d2a435a4f2b9237479ee16a92b, type: 2}
-  m_sharedMaterial: {fileID: -5118814527009103204, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
+  m_sharedMaterial: {fileID: 4525499186105570185, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -929,7 +929,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785503914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -963,7 +963,7 @@ MonoBehaviour:
   m_text: Creature
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53a6a5d2a435a4f2b9237479ee16a92b, type: 2}
-  m_sharedMaterial: {fileID: -5118814527009103204, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
+  m_sharedMaterial: {fileID: 4525499186105570185, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_text: Tom Black
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53a6a5d2a435a4f2b9237479ee16a92b, type: 2}
-  m_sharedMaterial: {fileID: -5118814527009103204, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
+  m_sharedMaterial: {fileID: 4525499186105570185, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1258,7 +1258,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892165241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1266,8 +1266,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -184.6, y: 290.9}
-  m_SizeDelta: {x: 75.19, y: 68.65}
+  m_AnchoredPosition: {x: -184.6, y: 289.8}
+  m_SizeDelta: {x: 123.66, y: 112.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892165243
 MonoBehaviour:
@@ -1292,8 +1292,7 @@ MonoBehaviour:
   m_text: 9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53a6a5d2a435a4f2b9237479ee16a92b, type: 2}
-  m_sharedMaterial: {fileID: -5118814527009103204, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: f8750e898a7fa264291052e157a7fd89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1317,8 +1316,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 85
+  m_fontSizeBase: 85
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1355,7 +1354,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -2.1674156, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1403,7 +1402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -84.1, y: 301.6}
+  m_AnchoredPosition: {x: -81.09998, y: 301.6}
   m_SizeDelta: {x: 75.19, y: 68.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932621370
@@ -1429,7 +1428,7 @@ MonoBehaviour:
   m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53a6a5d2a435a4f2b9237479ee16a92b, type: 2}
-  m_sharedMaterial: {fileID: -5118814527009103204, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
+  m_sharedMaterial: {fileID: 4525499186105570185, guid: 53a6a5d2a435a4f2b9237479ee16a92b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1853,12 +1852,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fab639f5991b749b7cbdde64597091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  attackPower: 0
-  manaCost: 0
-  healthText: {fileID: 872323753}
+  cardSO: {fileID: 11400000, guid: ebceb74770bc8194382e1d444c496aad, type: 2}
+  nameText: {fileID: 872323753}
+  descriptionText: {fileID: 312675564}
+  healthText: {fileID: 932621370}
   attackText: {fileID: 718943994}
-  costText: {fileID: 0}
+  costText: {fileID: 892165243}
 --- !u!4 &1799126906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2979585660260250427, guid: 97172f7bbd616fd4d8ec6508904a7f19,
@@ -2214,10 +2213,10 @@ RectTransform:
   m_Children:
   - {fileID: 872323752}
   - {fileID: 312675563}
-  - {fileID: 785503915}
-  - {fileID: 718943993}
   - {fileID: 932621369}
+  - {fileID: 718943993}
   - {fileID: 892165242}
+  - {fileID: 785503915}
   - {fileID: 677426387}
   m_Father: {fileID: 1809258786}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}

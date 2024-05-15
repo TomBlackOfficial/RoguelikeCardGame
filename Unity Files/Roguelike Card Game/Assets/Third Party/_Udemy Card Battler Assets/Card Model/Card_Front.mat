@@ -110,12 +110,12 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Effect_Rotation: 0.5
-    - _Effect_Tiling: 2
+    - _Effect_Tiling: 4
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Holo_Amount: 0.15
+    - _Holo_Amount: 0.075
     - _Holo_Strength: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
