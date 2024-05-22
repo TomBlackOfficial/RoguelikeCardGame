@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BattleUIController : MonoBehaviour
 {
@@ -12,7 +13,11 @@ public class BattleUIController : MonoBehaviour
 
     [Header("Assign")]
     [SerializeField] private TMP_Text playerManaText;
+    [SerializeField] private TMP_Text enemyManaText;
+    [SerializeField] private Slider playerHealthSlider;
+    [SerializeField] private Slider enemyHealthSlider;
     [SerializeField] private Popup popupWarning;
+    [SerializeField] private Button endTurnButton;
 
     private Popup currentPopup;
     private float popupCounter;
@@ -35,11 +40,36 @@ public class BattleUIController : MonoBehaviour
         }
     }
 
+    public void EndPlayerTurn()
+    {
+        BattleController.instance.EndPlayerTurn();
+    }
+
+    public void UpdatePlayerActionUI(bool isActive)
+    {
+        endTurnButton.interactable = isActive;
+    }
+
     public void SetPlayerManaText(int manaAmount)
     {
         playerManaText.text = manaAmount.ToString();
     }
-    
+
+    public void SetEnemyManaText(int manaAmount)
+    {
+        enemyManaText.text = manaAmount.ToString();
+    }
+
+    public void UpdatePlayerHealthUI(float healthAmount)
+    {
+        playerHealthSlider.value = healthAmount;
+    }
+
+    public void UpdateEnemyHealthUI(float healthAmount)
+    {
+        enemyHealthSlider.value = healthAmount;
+    }
+
     public void ShowWarning(string warningText)
     {
         currentPopup = popupWarning;

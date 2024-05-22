@@ -13,17 +13,26 @@ public class Card : MonoBehaviour
     public int attack { private set; get; }
     public int manaCost { private set; get; }
 
-    [SerializeField] private TMP_Text nameText, descriptionText, healthText, attackText, costText;
-
+    [Header("Settings")]
+    public bool isPlayer;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 3f;
 
+    [Header("Layer Masks")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask placementMask;
 
+    [Header("Assign")]
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private TMP_Text attackText;
+    [SerializeField] private TMP_Text costText;
+    public Animator anim;
+    public CardPlacePoint assignedPlace;
+
     public bool inHand {  private set; get; }
     public int handPosition { private set; get; }
-    public CardPlacePoint assignedPlace { private set; get; }
 
     private HandController controller;
     private Collider col;
@@ -38,6 +47,12 @@ public class Card : MonoBehaviour
     {
         controller = HandController.instance;
         col = GetComponent<Collider>();
+
+        if (targetPos == Vector3.zero)
+        {
+            targetPos = transform.position;
+            targetRot = transform.rotation;
+        }
 
         SetupCard();
     }
@@ -63,7 +78,7 @@ public class Card : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && justPressed == false)
             {
-                if (Physics.Raycast(ray, out hit, 100f, placementMask))
+                if (Physics.Raycast(ray, out hit, 100f, placementMask) && BattleController.instance.CanPerformActions())
                 {
                     CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
 
@@ -90,7 +105,7 @@ public class Card : MonoBehaviour
                 }
                 else
                 {
-                    // Player didn't click on any placement point
+                    // Player didn't click on any placement point or it's not their action turn
                     ReturnToHand();
                 }
             }
@@ -106,12 +121,17 @@ public class Card : MonoBehaviour
         attack = cardSO.attack;
         manaCost = cardSO.manaCost;
 
-        healthText.text = health.ToString();
-        attackText.text = attack.ToString();
-        costText.text = manaCost.ToString();
+        UpdateCardDisplay();
 
         nameText.text = cardSO.cardName;
         descriptionText.text = cardSO.description;
+    }
+
+    public void UpdateCardDisplay()
+    {
+        healthText.text = health.ToString();
+        attackText.text = attack.ToString();
+        costText.text = manaCost.ToString();
     }
 
     private void PlaceCard(CardPlacePoint placementPoint)
@@ -129,6 +149,26 @@ public class Card : MonoBehaviour
         BattleController.instance.SpendPlayerMana(manaCost);
     }
 
+    public void DamageCard(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            health = 0;
+
+            assignedPlace.activeCard = null;
+
+            MoveToPoint(BattleController.instance.discardPoint.position, BattleController.instance.discardPoint.rotation);
+
+            anim.SetTrigger("Jump");
+
+            Destroy(gameObject, 5f);
+        }
+
+        anim.SetTrigger("Hurt");
+        UpdateCardDisplay();
+    }
+
     public void MoveToPoint(Vector3 newPos, Quaternion newRot)
     {
         targetPos = newPos;
@@ -143,7 +183,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (inHand)
+        if (inHand && isPlayer)
         {
             MoveToPoint(controller.GetCardPositionX(handPosition) + new Vector3(0f, 0.2f, 0f), Quaternion.Euler(0, 0, 0));
         }
@@ -151,7 +191,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (inHand)
+        if (inHand && isPlayer)
         {
             MoveToPoint(controller.cardPositions[handPosition], controller.cardRotations[handPosition]);
         }
@@ -159,7 +199,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (inHand)
+        if (inHand && isPlayer && BattleController.instance.CanPerformActions())
         {
             isSelected = true;
             col.enabled = false;
