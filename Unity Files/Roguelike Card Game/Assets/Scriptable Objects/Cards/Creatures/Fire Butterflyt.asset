@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Fire Pig
+  m_Name: Fire Butterflyt
   m_EditorClassIdentifier: 
-  cardName: Fire Pig
+  cardName: Fire Butterfly
   description: Decrease the Attack of all Grass creatures by 1.
   health: 8
   attack: 3
-  manaCost: 3
+  manaCost: 1

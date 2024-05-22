@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Fire Pig
+  m_Name: Renewing Spring
   m_EditorClassIdentifier: 
-  cardName: Fire Pig
-  description: Decrease the Attack of all Grass creatures by 1.
-  health: 8
-  attack: 3
+  cardName: 'Renewing Spring '
+  description: This card fully heals one creature, but all your creatures lose 10
+    health at the end of the turn. High reward, potential self-damage.
+  health: 0
+  attack: 0
   manaCost: 3
