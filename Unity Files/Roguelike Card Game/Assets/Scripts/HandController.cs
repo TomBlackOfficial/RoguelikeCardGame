@@ -6,7 +6,7 @@ public class HandController : MonoBehaviour
 {
     public static HandController instance;
 
-    public Card[] heldCards;
+    public List<Card> heldCards = new List<Card>();
 
     [SerializeField] private Vector3 offset = new Vector3(0.25f, 0.1f, -0.15f);
     [SerializeField] private float rotation = 20f;
@@ -28,10 +28,11 @@ public class HandController : MonoBehaviour
     public void SetCardPositionsInHand()
     {
         cardPositions.Clear();
+        cardRotations.Clear();
 
-        for (int i = 0; i < heldCards.Length; i++)
+        for (int i = 0; i < heldCards.Count; i++)
         {
-            float newXPos = spawnPoint.position.x + ((i * offset.x) - (heldCards.Length - 1) * (offset.x * 0.5f));
+            float newXPos = spawnPoint.position.x + ((i * offset.x) - (heldCards.Count - 1) * (offset.x * 0.5f));
             float newYPos = spawnPoint.position.y + (i * offset.y);
             float newZPos = spawnPoint.position.z + (Mathf.Abs(spawnPoint.position.x - newXPos) * offset.z);
 
@@ -44,6 +45,20 @@ public class HandController : MonoBehaviour
             heldCards[i].MoveToPoint(newPos, newRot);
             heldCards[i].AddCardToHand(i);
         }
+    }
+
+    public void RemoveCardFromHand(Card cardToRemove)
+    {
+        if (heldCards[cardToRemove.handPosition] == cardToRemove)
+        {
+            heldCards.RemoveAt(cardToRemove.handPosition);
+        } 
+        else
+        {
+            Debug.LogError("Card at position " + cardToRemove.handPosition + " is not the card being removed from hand.");
+        }
+
+        SetCardPositionsInHand();
     }
 
     public Vector3 GetCardPositionX(int index)
