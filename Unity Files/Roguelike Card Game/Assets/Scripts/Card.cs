@@ -5,6 +5,8 @@ using TMPro;
 
 public class Card : MonoBehaviour
 {
+    private static string WARNING_MANA = "Not enough Mana to perform this action.";
+
     public CardScriptableObject cardSO;
 
     public int health { private set; get; }
@@ -76,6 +78,8 @@ public class Card : MonoBehaviour
                         {
                             // Player doesn't have enough mana
                             ReturnToHand();
+
+                            BattleUIController.instance.ShowWarning(WARNING_MANA);
                         }
                     }
                     else

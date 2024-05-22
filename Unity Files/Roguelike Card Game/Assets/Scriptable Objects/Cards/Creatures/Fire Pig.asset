@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Pig
   description: Decrease the Attack of all Grass creatures by 1.
-  health: 4
-  attack: 1
-  manaCost: 1
+  health: 8
+  attack: 3
+  manaCost: 3

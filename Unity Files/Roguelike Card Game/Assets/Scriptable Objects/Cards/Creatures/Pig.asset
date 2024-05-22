@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pig
   m_EditorClassIdentifier: 
   cardName: Pig
-  description: Decrease the Attack of all Grass creatures by 1.
+  description: Decrease the Attack of all Water creatures by 1.
   health: 4
   attack: 1
   manaCost: 1
