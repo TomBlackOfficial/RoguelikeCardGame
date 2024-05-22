@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Weather Ball
+  m_Name: Spitfire
   m_EditorClassIdentifier: 
-  cardName: Weather Ball
-  description: Spawns rain for 3 turns weakening fire creatures.
-  health: 15
-  attack: 8
-  manaCost: 4
+  cardName: Spit-Fire
+  description: A cute ol Fireball does 20 damage for 3 turns and then explodes killing
+    itself.
+  health: 11
+  attack: 20
+  manaCost: 3

@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Decrease the Attack of all Grass creatures by 1.
   health: 8
   attack: 3
-  manaCost: 3
+  manaCost: 2
