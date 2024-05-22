@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
   m_Name: Ice Pig
   m_EditorClassIdentifier: 
-  cardName: Pig
-  description: Decrease the Attack of all Fire creatures by 1.
+  cardName: Ice Pig
+  description: It's a cold pig.
   health: 6
   attack: 3
   manaCost: 2

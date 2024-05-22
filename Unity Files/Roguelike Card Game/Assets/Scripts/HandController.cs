@@ -32,7 +32,7 @@ public class HandController : MonoBehaviour
 
         for (int i = 0; i < heldCards.Count; i++)
         {
-            float newXPos = spawnPoint.position.x + ((i * offset.x) - (heldCards.Count - 1) * (offset.x * 0.5f));
+            float newXPos = spawnPoint.position.x + ((i * (offset.x - (heldCards.Count * 0.008f))) - (heldCards.Count - 1) * ((offset.x - (heldCards.Count * 0.008f)) * 0.5f));
             float newYPos = spawnPoint.position.y + (i * offset.y);
             float newZPos = spawnPoint.position.z + (Mathf.Abs(spawnPoint.position.x - newXPos) * offset.z);
 
@@ -58,6 +58,12 @@ public class HandController : MonoBehaviour
             Debug.LogError("Card at position " + cardToRemove.handPosition + " is not the card being removed from hand.");
         }
 
+        SetCardPositionsInHand();
+    }
+
+    public void AddCardToHand(Card cardToAdd)
+    {
+        heldCards.Add(cardToAdd);
         SetCardPositionsInHand();
     }
 
