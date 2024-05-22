@@ -17,4 +17,4 @@ MonoBehaviour:
     element.
   health: 1
   attack: 10
-  manaCost: 4
+  manaCost: 3

@@ -16,7 +16,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        PauseMenuUI.SetActive(false);
+        if (PauseMenuUI != null)
+            PauseMenuUI.SetActive(false);
     }
 
     private void Update()

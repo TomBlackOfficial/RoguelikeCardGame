@@ -6,9 +6,10 @@ public class DeckController : MonoBehaviour
 {
     public static DeckController instance;
 
-    [SerializeField] private Card cardPrefab;
     [SerializeField] private List<CardScriptableObject> deckToUse = new List<CardScriptableObject>();
     private List<CardScriptableObject> activeCards = new List<CardScriptableObject>();
+
+    [SerializeField] private Card cardPrefab;
     private float waitBetweenDrawingCards = 0.25f;
 
     private void Awake()

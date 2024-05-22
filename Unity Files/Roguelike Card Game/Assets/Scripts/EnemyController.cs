@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        RandomizeAIType();
     }
 
     private void Start()
@@ -308,5 +310,12 @@ public class EnemyController : MonoBehaviour
         }
 
         return cardToPlay;
+    }
+
+    private void RandomizeAIType()
+    {
+        var values = System.Enum.GetValues(typeof(AIType));
+        int random = Random.Range(1, values.Length);
+        enemyAIType = (AIType)values.GetValue(random);
     }
 }

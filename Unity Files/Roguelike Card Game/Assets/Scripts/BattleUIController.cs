@@ -18,6 +18,8 @@ public class BattleUIController : MonoBehaviour
     [SerializeField] private Slider enemyHealthSlider;
     [SerializeField] private Popup popupWarning;
     [SerializeField] private Button endTurnButton;
+    [SerializeField] private GameObject battleWinScreen;
+    [SerializeField] private GameObject battleLoseScreen;
 
     private Popup currentPopup;
     private float popupCounter;
@@ -68,6 +70,18 @@ public class BattleUIController : MonoBehaviour
     public void UpdateEnemyHealthUI(float healthAmount)
     {
         enemyHealthSlider.value = healthAmount;
+    }
+
+    public void ShowBattleEndScreen(bool isWin)
+    {
+        if (isWin)
+        {
+            battleWinScreen.SetActive(true);
+        }
+        else
+        {
+            battleLoseScreen.SetActive(true);
+        }
     }
 
     public void ShowWarning(string warningText)

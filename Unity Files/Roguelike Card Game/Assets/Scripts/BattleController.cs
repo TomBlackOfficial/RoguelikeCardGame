@@ -39,6 +39,8 @@ public class BattleController : MonoBehaviour
     public int playerHealth { private set; get; }
     public int enemyHealth { private set; get; }
 
+    public bool battleEnded { private set; get; }
+
     private void Awake()
     {
         instance = this;
@@ -106,6 +108,9 @@ public class BattleController : MonoBehaviour
 
     public void AdvanceTurn()
     {
+        if (battleEnded)
+            return;
+
         currentPhase++;
 
         if ((int)currentPhase >= System.Enum.GetValues(typeof(TurnOrder)).Length)
@@ -168,7 +173,7 @@ public class BattleController : MonoBehaviour
 
     public void DamagePlayer(int amount)
     {
-        if (playerHealth > 0)
+        if (playerHealth > 0 && !battleEnded)
         {
             playerHealth -= amount;
 
@@ -177,6 +182,7 @@ public class BattleController : MonoBehaviour
                 playerHealth = 0;
 
                 // End Battle
+                EndBattle(false);
             }
 
             BattleUIController.instance.UpdatePlayerHealthUI(PlayerHealthAmount());
@@ -185,7 +191,7 @@ public class BattleController : MonoBehaviour
 
     public void DamageEnemy(int amount)
     {
-        if (enemyHealth > 0)
+        if (enemyHealth > 0 && !battleEnded)
         {
             enemyHealth -= amount;
 
@@ -194,10 +200,25 @@ public class BattleController : MonoBehaviour
                 enemyHealth = 0;
 
                 // End Battle
+                EndBattle(true);
             }
 
             BattleUIController.instance.UpdateEnemyHealthUI(EnemyHealthAmount());
         }
+    }
+
+    private void EndBattle(bool isWin)
+    {
+        battleEnded = true;
+
+        StartCoroutine(ShowResultCoroutine(isWin));
+    }
+
+    IEnumerator ShowResultCoroutine(bool isWin)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        BattleUIController.instance.ShowBattleEndScreen(isWin);
     }
 
     public bool CanPerformActions()
