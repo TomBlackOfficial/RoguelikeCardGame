@@ -31,11 +31,14 @@ public class DeckController : MonoBehaviour
         List<CardScriptableObject> tempDeck = new List<CardScriptableObject>();
         tempDeck.AddRange(deckToUse);
 
-        while(tempDeck.Count > 0)
+        int iterations = 0;
+        while(tempDeck.Count > 0 && iterations < 500)
         {
             int selected = Random.Range(0, tempDeck.Count);
             activeCards.Add(tempDeck[selected]);
             tempDeck.RemoveAt(selected);
+
+            iterations++;
         }
     }
 

@@ -6,8 +6,8 @@ public class CardPointsController : MonoBehaviour
 {
     public static CardPointsController instance;
 
-    [SerializeField] private CardPlacePoint[] playerCardPoints, enemyCardPoints;
-    [SerializeField] private float timeBetweenAttacks = 0.25f;
+    public CardPlacePoint[] playerCardPoints, enemyCardPoints;
+    public float timeBetweenAttacks = 0.25f;
 
     private void Awake()
     {

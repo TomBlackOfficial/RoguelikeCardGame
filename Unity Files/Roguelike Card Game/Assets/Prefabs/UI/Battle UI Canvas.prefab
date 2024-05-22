@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupTime: 2
   playerManaText: {fileID: 854587724386409341}
+  enemyManaText: {fileID: 4849459341703522383}
   playerHealthSlider: {fileID: 5928536498779535844}
   enemyHealthSlider: {fileID: 3016202103791810704}
   popupWarning: {fileID: 3449024459814256120}
@@ -974,5 +975,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4849459341703522383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6666983604797118858, guid: 9266db923bacb164cb17beb5ddddbd5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2290467232615576005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -22,12 +22,16 @@ public class BattleController : MonoBehaviour
     [Header("Mana Settings")]
     [SerializeField] private int startingMana = 5;
     [SerializeField] private int maxMana = 12;
+
     public int playerMana { private set; get; }
+    public int enemyMana { private set; get; }
+
     private int currentPlayerMaxMana;
+    private int currentEnemyMaxMana;
 
     [Header("Card Settings")]
-    [SerializeField] private int startingCards = 4;
-    [SerializeField] private int cardsPerTurn = 1;
+    public int startingCards = 4;
+    public int cardsPerTurn = 1;
 
     [Header("Assign")]
     public Transform discardPoint;
@@ -48,7 +52,10 @@ public class BattleController : MonoBehaviour
         BattleUIController.instance.UpdateEnemyHealthUI(EnemyHealthAmount());
 
         currentPlayerMaxMana = startingMana;
+        currentEnemyMaxMana = startingMana;
         FillPlayerMana();
+        FillEnemyMana();
+
         DeckController.instance.DrawMultipleCards(startingCards);
     }
 
@@ -72,11 +79,30 @@ public class BattleController : MonoBehaviour
         BattleUIController.instance.SetPlayerManaText(playerMana);
     }
 
+    public void SpendEnemyMana(int amount)
+    {
+        enemyMana -= amount;
+
+        if (enemyMana < 0)
+        {
+            enemyMana = 0;
+        }
+
+        BattleUIController.instance.SetEnemyManaText(enemyMana);
+    }
+
     public void FillPlayerMana()
     {
         playerMana = currentPlayerMaxMana;
         BattleUIController.instance.SetPlayerManaText(playerMana);
     }
+
+    public void FillEnemyMana()
+    {
+        enemyMana = currentEnemyMaxMana;
+        BattleUIController.instance.SetEnemyManaText(enemyMana);
+    }
+
 
     public void AdvanceTurn()
     {
@@ -112,8 +138,14 @@ public class BattleController : MonoBehaviour
 
             case TurnOrder.enemyActive:
 
-                Debug.Log("Skipping enemy actions.");
-                AdvanceTurn();
+                if (currentEnemyMaxMana < maxMana)
+                {
+                    currentEnemyMaxMana++;
+                }
+
+                FillEnemyMana();
+
+                EnemyController.instance.StartAction();
 
                 break;
 

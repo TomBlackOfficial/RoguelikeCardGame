@@ -13,6 +13,7 @@ public class BattleUIController : MonoBehaviour
 
     [Header("Assign")]
     [SerializeField] private TMP_Text playerManaText;
+    [SerializeField] private TMP_Text enemyManaText;
     [SerializeField] private Slider playerHealthSlider;
     [SerializeField] private Slider enemyHealthSlider;
     [SerializeField] private Popup popupWarning;
@@ -53,7 +54,12 @@ public class BattleUIController : MonoBehaviour
     {
         playerManaText.text = manaAmount.ToString();
     }
-    
+
+    public void SetEnemyManaText(int manaAmount)
+    {
+        enemyManaText.text = manaAmount.ToString();
+    }
+
     public void UpdatePlayerHealthUI(float healthAmount)
     {
         playerHealthSlider.value = healthAmount;
