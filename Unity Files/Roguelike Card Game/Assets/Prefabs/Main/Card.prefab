@@ -642,7 +642,8 @@ MonoBehaviour:
   attackText: {fileID: 7023273671015144367}
   costText: {fileID: 5102326536950279282}
   cardTypeText: {fileID: 5223594735061888439}
-  anim: {fileID: 7266040089910659150}
+  creatureSpawnPoint: {fileID: 3375566875612068525}
+  cardMesh: {fileID: 2153040293774284654}
   assignedPlace: {fileID: 0}
 --- !u!65 &141992797556105894
 BoxCollider:

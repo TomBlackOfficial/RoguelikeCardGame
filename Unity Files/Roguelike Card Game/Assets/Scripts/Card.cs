@@ -30,14 +30,18 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text attackText;
     [SerializeField] private TMP_Text costText;
     [SerializeField] private TMP_Text cardTypeText;
-    public Animator anim;
-    public CardPlacePoint assignedPlace;
+    [SerializeField] private Transform creatureSpawnPoint;
+    [SerializeField] private GameObject cardMesh;
+
+    [HideInInspector] public CardPlacePoint assignedPlace;
 
     public bool inHand {  private set; get; }
     public int handPosition { private set; get; }
+    public Animator anim { private set; get; }
 
     private HandController controller;
     private Collider col;
+    private GameObject creatureObj;
 
     private Vector3 targetPos;
     private Quaternion targetRot;
@@ -182,6 +186,19 @@ public class Card : MonoBehaviour
         controller.RemoveCardFromHand(this);
 
         BattleController.instance.SpendPlayerMana(manaCost);
+
+        StartCoroutine(SpawnCreature());
+    }
+
+    IEnumerator SpawnCreature()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        cardMesh.SetActive(false);
+        creatureObj = Instantiate(cardSO.creatureModel, creatureSpawnPoint.position, creatureSpawnPoint.rotation);
+        creatureObj.transform.parent = creatureSpawnPoint;
+        creatureObj.transform.localPosition = Vector3.zero;
+        anim = creatureObj.GetComponent<Animator>();
     }
 
     private void PlaySpell()
@@ -208,14 +225,14 @@ public class Card : MonoBehaviour
 
             assignedPlace.activeCard = null;
 
-            MoveToPoint(BattleController.instance.discardPoint.position, BattleController.instance.discardPoint.rotation);
+            //MoveToPoint(BattleController.instance.discardPoint.position, BattleController.instance.discardPoint.rotation);
 
-            anim.SetTrigger("Jump");
+            SetAnimTrigger("Die");
 
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 1f);
         }
 
-        anim.SetTrigger("Hurt");
+        SetAnimTrigger("Hurt");
         UpdateCardDisplay();
     }
 
@@ -264,5 +281,13 @@ public class Card : MonoBehaviour
         col.enabled = true;
 
         MoveToPoint(controller.cardPositions[handPosition], controller.cardRotations[handPosition]);
+    }
+
+    public void SetAnimTrigger(string triggerName)
+    {
+        if (anim == null)
+            return;
+
+        anim.SetTrigger(triggerName);
     }
 }
