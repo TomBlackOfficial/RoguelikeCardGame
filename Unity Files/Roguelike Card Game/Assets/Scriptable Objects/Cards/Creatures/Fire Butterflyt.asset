@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Fire Butterfly
   description: Decrease the Attack of all Grass creatures by 1.
+  manaCost: 1
   health: 8
   attack: 3
-  manaCost: 1
+  cardType: 0
+  element: 0

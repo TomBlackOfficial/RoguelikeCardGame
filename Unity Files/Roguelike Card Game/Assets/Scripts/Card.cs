@@ -12,6 +12,7 @@ public class Card : MonoBehaviour
     public int health { private set; get; }
     public int attack { private set; get; }
     public int manaCost { private set; get; }
+    public CardScriptableObject.Type cardType { private set; get; }
 
     [Header("Settings")]
     public bool isPlayer;
@@ -28,6 +29,7 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text attackText;
     [SerializeField] private TMP_Text costText;
+    [SerializeField] private TMP_Text cardTypeText;
     public Animator anim;
     public CardPlacePoint assignedPlace;
 
@@ -72,42 +74,51 @@ public class Card : MonoBehaviour
                 MoveToPoint(hit.point + new Vector3(0f, 0.05f, 0f), Quaternion.identity);
             }
 
-            if (Input.GetMouseButtonDown(1) && !BattleController.instance.battleEnded)
+            if (cardType == CardScriptableObject.Type.Spell)
             {
-                ReturnToHand();
+                if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
+                    PlaySpell();
             }
-            else if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded)
+            else if (cardType == CardScriptableObject.Type.Creature)
             {
-                if (Physics.Raycast(ray, out hit, 100f, placementMask) && BattleController.instance.CanPerformActions())
+                if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded)
                 {
-                    CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
-
-                    if (selectedPoint.activeCard == null && selectedPoint.isPlayerPoint)
+                    if (Physics.Raycast(ray, out hit, 100f, placementMask) && BattleController.instance.CanPerformActions())
                     {
-                        if (BattleController.instance.playerMana >= manaCost)
+                        CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
+
+                        if (selectedPoint.activeCard == null && selectedPoint.isPlayerPoint)
                         {
-                            // Successfully clicked on a valid placement point
-                            PlaceCard(selectedPoint);
+                            if (BattleController.instance.playerMana >= manaCost)
+                            {
+                                // Successfully clicked on a valid placement point
+                                PlaceCard(selectedPoint);
+                            }
+                            else
+                            {
+                                // Player doesn't have enough mana
+                                ReturnToHand();
+
+                                BattleUIController.instance.ShowWarning(WARNING_MANA);
+                            }
                         }
                         else
                         {
-                            // Player doesn't have enough mana
+                            // Selected placement point is full or isn't for the player
                             ReturnToHand();
-
-                            BattleUIController.instance.ShowWarning(WARNING_MANA);
                         }
                     }
                     else
                     {
-                        // Selected placement point is full or isn't for the player
+                        // Player didn't click on any placement point or it's not their action turn
                         ReturnToHand();
                     }
                 }
-                else
-                {
-                    // Player didn't click on any placement point or it's not their action turn
-                    ReturnToHand();
-                }
+            }
+
+            if (Input.GetMouseButtonDown(1) && !BattleController.instance.battleEnded)
+            {
+                ReturnToHand();
             }
         }
 
@@ -117,8 +128,20 @@ public class Card : MonoBehaviour
 
     public void SetupCard()
     {
-        health = cardSO.health;
-        attack = cardSO.attack;
+        cardType = cardSO.cardType;
+
+        switch (cardType)
+        {
+            case CardScriptableObject.Type.Creature:
+                health = cardSO.health;
+                attack = cardSO.attack;
+                break;
+            case CardScriptableObject.Type.Spell:
+                health = -1;
+                attack = -1;
+                break;
+        }
+
         manaCost = cardSO.manaCost;
 
         UpdateCardDisplay();
@@ -129,8 +152,20 @@ public class Card : MonoBehaviour
 
     public void UpdateCardDisplay()
     {
-        healthText.text = health.ToString();
-        attackText.text = attack.ToString();
+        switch (cardType)
+        {
+            case CardScriptableObject.Type.Creature:
+                healthText.text = health.ToString();
+                attackText.text = attack.ToString();
+                cardTypeText.text = "Creature";
+                break;
+            case CardScriptableObject.Type.Spell:
+                healthText.text = "";
+                attackText.text = "";
+                cardTypeText.text = "Spell";
+                break;
+        }
+
         costText.text = manaCost.ToString();
     }
 
@@ -149,8 +184,23 @@ public class Card : MonoBehaviour
         BattleController.instance.SpendPlayerMana(manaCost);
     }
 
+    private void PlaySpell()
+    {
+        inHand = false;
+        isSelected = false;
+
+        controller.RemoveCardFromHand(this);
+
+        BattleController.instance.SpendPlayerMana(manaCost);
+
+        Destroy(gameObject);
+    }
+
     public void DamageCard(int amount)
     {
+        if (cardType == CardScriptableObject.Type.Spell)
+            return;
+
         health -= amount;
         if (health <= 0)
         {
@@ -201,9 +251,10 @@ public class Card : MonoBehaviour
     {
         if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
         {
+            Debug.Log("Test");
+            justPressed = true;
             isSelected = true;
             col.enabled = false;
-            justPressed = true;
         }
     }
     

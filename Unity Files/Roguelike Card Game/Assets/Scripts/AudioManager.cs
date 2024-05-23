@@ -42,6 +42,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySound(string soundName)
     {
         Sound newSound = sounds.FirstOrDefault(item => item.name == soundName);
+
+        if (newSound.clip == null)
+            return;
+
         AudioSource source = Instantiate(new GameObject($"AudioSource_{newSound.name}"), Vector3.zero, Quaternion.identity).AddComponent<AudioSource>();
         source.transform.parent = transform;
 

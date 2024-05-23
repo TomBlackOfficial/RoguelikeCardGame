@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &256004386990795446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3375566875612068525}
+  m_Layer: 0
+  m_Name: Creature Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3375566875612068525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256004386990795446}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1110951836232034184}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &746772356396143550
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,7 +66,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -293}
-  m_SizeDelta: {x: 261.4, y: 68.7}
+  m_SizeDelta: {x: 314.12, y: 68.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4820519621421128143
 CanvasRenderer:
@@ -308,7 +339,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -181}
-  m_SizeDelta: {x: 398.29, y: 168.4}
+  m_SizeDelta: {x: 411.8, y: 168.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3406654850598957018
 CanvasRenderer:
@@ -580,6 +611,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1794645564641149591}
+  - {fileID: 3375566875612068525}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6590258203101362768
@@ -609,6 +641,7 @@ MonoBehaviour:
   healthText: {fileID: 3182316917501887681}
   attackText: {fileID: 7023273671015144367}
   costText: {fileID: 5102326536950279282}
+  cardTypeText: {fileID: 5223594735061888439}
   anim: {fileID: 7266040089910659150}
   assignedPlace: {fileID: 0}
 --- !u!65 &141992797556105894
@@ -643,7 +676,7 @@ GameObject:
   - component: {fileID: 1794645564641149591}
   - component: {fileID: 7266040089910659150}
   m_Layer: 0
-  m_Name: Mesh
+  m_Name: Card Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,7 +1076,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -71}
-  m_SizeDelta: {x: 261.4, y: 68.7}
+  m_SizeDelta: {x: 433.6, y: 68.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &910439572953667730
 CanvasRenderer:

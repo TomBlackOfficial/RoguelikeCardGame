@@ -15,6 +15,8 @@ MonoBehaviour:
   cardName: Hog
   description: A rampaging Hog does a lot of damage but may suffer frim recoil from
     his attacks.
+  manaCost: 5
   health: 18
   attack: 12
-  manaCost: 5
+  cardType: 0
+  element: 0

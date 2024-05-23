@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Garden Fairy
   description: This creatures increases mana productuon by +!
+  manaCost: 3
   health: 15
   attack: 6
-  manaCost: 3
+  cardType: 0
+  element: 0

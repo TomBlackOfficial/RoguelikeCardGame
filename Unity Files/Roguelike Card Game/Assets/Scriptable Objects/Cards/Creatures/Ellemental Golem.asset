@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Elemental Golem
   description: Blocks any attacks from any adacent lanes
+  manaCost: 6
   health: 24
   attack: 8
-  manaCost: 6
+  cardType: 0
+  element: 0
