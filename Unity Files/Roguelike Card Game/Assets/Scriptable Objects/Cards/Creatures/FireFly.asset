@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Ellemental Golem
+  m_Name: FireFly
   m_EditorClassIdentifier: 
-  cardName: Elemental Golem
-  description: Blocks any attacks from any adacent lanes
-  manaCost: 6
-  health: 24
-  attack: 8
+  cardName: Fire Fly
+  description: Decrease the Attack of all Grass creatures by 1.
+  manaCost: 1
+  health: 12
+  attack: 7
   cardType: 0
-  element: 0
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  element: 1
+  creatureModel: {fileID: 8215003284720749345, guid: de547c06f495e104f9c9602a9786b36a,
     type: 3}

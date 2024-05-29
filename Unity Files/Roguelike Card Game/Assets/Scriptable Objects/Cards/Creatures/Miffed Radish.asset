@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Pig
+  m_Name: Miffed Radish
   m_EditorClassIdentifier: 
-  cardName: Pig
-  description: It's a pig.
-  manaCost: 1
-  health: 6
-  attack: 6
+  cardName: Miffed Radish
+  description: This creature will not perform any action until 4 turns.
+  manaCost: 3
+  health: 21
+  attack: 13
   cardType: 0
   element: 2
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  creatureModel: {fileID: 7214988284638652460, guid: c9eeb8e60b9ca1c4b8ff0674f880e7dc,
     type: 3}

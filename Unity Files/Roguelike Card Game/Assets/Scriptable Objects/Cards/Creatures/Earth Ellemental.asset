@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Pig
+  m_Name: Earth Ellemental
   m_EditorClassIdentifier: 
-  cardName: Pig
-  description: It's a pig.
-  manaCost: 1
-  health: 6
-  attack: 6
+  cardName: Elemental Golem
+  description: Blocks any attacks from any adacent lanes
+  manaCost: 4
+  health: 24
+  attack: 8
   cardType: 0
   element: 2
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  creatureModel: {fileID: 1976535029654758083, guid: c5bcdd01ab4f36e4cae16265919c0412,
     type: 3}

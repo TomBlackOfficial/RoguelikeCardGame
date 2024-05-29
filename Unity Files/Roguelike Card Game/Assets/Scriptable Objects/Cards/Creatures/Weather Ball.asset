@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Weather Ball
   description: Spawns rain for 3 turns weakening fire creatures.
-  manaCost: 4
-  health: 15
+  manaCost: 3
+  health: 20
   attack: 8
   cardType: 0
   element: 0
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  creatureModel: {fileID: 1210206296863218336, guid: 3b9092a401d7b4846b10970e87fe508a,
     type: 3}

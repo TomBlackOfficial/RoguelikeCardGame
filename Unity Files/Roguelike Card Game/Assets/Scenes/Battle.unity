@@ -99977,7 +99977,7 @@ PrefabInstance:
     - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
         type: 3}
       propertyPath: deckToUse.Array.size
-      value: 4
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
         type: 3}
@@ -100001,8 +100001,148 @@ PrefabInstance:
         type: 3}
       propertyPath: 'deckToUse.Array.data[3]'
       value: 
+      objectReference: {fileID: 11400000, guid: cb696e9befeafde47b97d2cd412831cc,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 093e711311b8330458a21cddc7bc3c84,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e7e12f05b823dd54294c54f94661ca3b,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dc2c167bb4d65e48b0623fa8b1ddff3,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e745451ba8bcfc478a2a6188d8982eb,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ebceb74770bc8194382e1d444c496aad,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f4bcaef899bb994d99aba6f7b07b24f,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e47efcba63cc2447a84413a9fc83841,
+        type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[11]'
+      value: 
       objectReference: {fileID: 11400000, guid: 401db290e18f0c9428bb911018b03cda,
         type: 2}
+    - target: {fileID: 8138246189117032010, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d684336dc8f6a734ba2cb69969e8d1ad,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: deckToUse.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e745451ba8bcfc478a2a6188d8982eb,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e7e12f05b823dd54294c54f94661ca3b,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dc2c167bb4d65e48b0623fa8b1ddff3,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ebceb74770bc8194382e1d444c496aad,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 31e6cdda168d3d544bb3c2a0a311fa7b,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 250e4fe93b8df8040a4686fe38a0aa79,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862c515a87b044a4883ddb7f357834e2,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f94a526d6186c5a4bb064628ee64f83e,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bd9c7c83011ce04d83cd3d6b81d0c9b,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 79436622236755148a9cf5e72fd0dfe8,
+        type: 2}
+    - target: {fileID: 8561517200759691302, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: 'deckToUse.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a97d2f36d166af848b4d2238c4fdef3c,
+        type: 2}
+    - target: {fileID: 9184196615458942258, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: maxMana
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184196615458942258, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: startingMana
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184196615458942258, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: maxPlayerHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -15,10 +15,10 @@ MonoBehaviour:
   cardName: Eye Guy
   description: Can block all incoming attacks other than any attack from the opposing
     element.
-  manaCost: 3
-  health: 1
-  attack: 10
+  manaCost: 2
+  health: 18
+  attack: 9
   cardType: 0
-  element: 0
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  element: 1
+  creatureModel: {fileID: 1332247107648933374, guid: 76f7bfe10f20a6a40b06849e566030c5,
     type: 3}
