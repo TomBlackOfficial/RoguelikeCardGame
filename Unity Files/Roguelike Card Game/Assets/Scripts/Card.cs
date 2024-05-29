@@ -273,7 +273,6 @@ public class Card : MonoBehaviour
     {
         if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
         {
-            Debug.Log("Test");
             justPressed = true;
             isSelected = true;
             col.enabled = false;

@@ -15,6 +15,9 @@ MonoBehaviour:
   cardName: Flying Strike
   description: Allows a chosen creature to ignore lane restrictions and attack any
     enemy creature.
+  manaCost: 3
   health: 0
   attack: 4
-  manaCost: 3
+  cardType: 1
+  element: 0
+  creatureModel: {fileID: 0}

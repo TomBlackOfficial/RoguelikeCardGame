@@ -19,5 +19,5 @@ MonoBehaviour:
   attack: 19
   cardType: 0
   element: 2
-  creatureModel: {fileID: 3724572471564977762, guid: 3869ca982ead0c54688e41291e691359,
+  creatureModel: {fileID: 1472291851105863000, guid: 4f3b47bd8379ee143bbd0f7f08b51f22,
     type: 3}

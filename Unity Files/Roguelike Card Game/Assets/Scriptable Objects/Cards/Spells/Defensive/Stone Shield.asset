@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Stone Shield
   description: ' Target a friendly creature. Grant it +1 Defense for 2 turns. '
+  manaCost: 1
   health: 0
   attack: 0
-  manaCost: 1
+  cardType: 1
+  element: 0
+  creatureModel: {fileID: 0}

@@ -15,6 +15,9 @@ MonoBehaviour:
   cardName: 'Renewing Spring '
   description: This card fully heals one creature, but all your creatures lose 10
     health at the end of the turn. High reward, potential self-damage.
+  manaCost: 3
   health: 0
   attack: 0
-  manaCost: 3
+  cardType: 1
+  element: 0
+  creatureModel: {fileID: 0}
