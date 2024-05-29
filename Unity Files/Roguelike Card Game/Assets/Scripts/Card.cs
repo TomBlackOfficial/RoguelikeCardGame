@@ -187,10 +187,15 @@ public class Card : MonoBehaviour
 
         BattleController.instance.SpendPlayerMana(manaCost);
 
-        StartCoroutine(SpawnCreature());
+        SpawnCreature();
     }
 
-    IEnumerator SpawnCreature()
+    public void SpawnCreature()
+    {
+        StartCoroutine(SpawnCreatureCoroutine());
+    }
+
+    IEnumerator SpawnCreatureCoroutine()
     {
         yield return new WaitForSeconds(0.2f);
 

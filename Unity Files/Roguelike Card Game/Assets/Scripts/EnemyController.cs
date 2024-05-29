@@ -280,6 +280,7 @@ public class EnemyController : MonoBehaviour
         newCard.cardSO = cardSO;
         newCard.SetupCard();
         newCard.MoveToPoint(placePoint.transform.position, placePoint.transform.rotation);
+        newCard.SpawnCreature();
 
         placePoint.activeCard = newCard;
         newCard.assignedPlace = placePoint;
