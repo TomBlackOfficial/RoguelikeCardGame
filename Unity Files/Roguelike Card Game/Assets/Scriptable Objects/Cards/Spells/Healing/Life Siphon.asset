@@ -17,6 +17,9 @@ MonoBehaviour:
     distributes that health evenly amongst all your remaining creatures. This is
     a riskier option for players who want to keep their entire board healthy but
     don''t mind sacrificing some health from one creature. '
+  manaCost: 4
   health: 0
   attack: 0
-  manaCost: 4
+  cardType: 1
+  element: 0
+  creatureModel: {fileID: 0}

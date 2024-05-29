@@ -100260,12 +100260,17 @@ PrefabInstance:
     - target: {fileID: 9184196615458942258, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
         type: 3}
       propertyPath: maxMana
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9184196615458942258, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
         type: 3}
       propertyPath: startingMana
-      value: 5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184196615458942258, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
+        type: 3}
+      propertyPath: startingCards
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9184196615458942258, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
         type: 3}

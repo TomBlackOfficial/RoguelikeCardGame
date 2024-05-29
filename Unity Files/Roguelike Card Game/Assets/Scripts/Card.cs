@@ -187,10 +187,15 @@ public class Card : MonoBehaviour
 
         BattleController.instance.SpendPlayerMana(manaCost);
 
-        StartCoroutine(SpawnCreature());
+        SpawnCreature();
     }
 
-    IEnumerator SpawnCreature()
+    public void SpawnCreature()
+    {
+        StartCoroutine(SpawnCreatureCoroutine());
+    }
+
+    IEnumerator SpawnCreatureCoroutine()
     {
         yield return new WaitForSeconds(0.2f);
 
@@ -268,7 +273,6 @@ public class Card : MonoBehaviour
     {
         if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
         {
-            Debug.Log("Test");
             justPressed = true;
             isSelected = true;
             col.enabled = false;

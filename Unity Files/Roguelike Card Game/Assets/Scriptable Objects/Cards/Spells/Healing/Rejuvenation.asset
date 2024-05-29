@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'Rejuvenation '
   description: It heals one creature for a significant amount of health.
+  manaCost: 2
   health: 0
   attack: 0
-  manaCost: 2
+  cardType: 1
+  element: 0
+  creatureModel: {fileID: 0}
