@@ -79,18 +79,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deckToUse:
-  - {fileID: 11400000, guid: e4a8c2c85e62e1542858d52913735230, type: 2}
-  - {fileID: 11400000, guid: c2c0e6568665165419357ffddef1e23d, type: 2}
-  - {fileID: 11400000, guid: 0e745451ba8bcfc478a2a6188d8982eb, type: 2}
-  - {fileID: 11400000, guid: e7e12f05b823dd54294c54f94661ca3b, type: 2}
-  - {fileID: 11400000, guid: 6dc2c167bb4d65e48b0623fa8b1ddff3, type: 2}
-  - {fileID: 11400000, guid: ebceb74770bc8194382e1d444c496aad, type: 2}
-  - {fileID: 11400000, guid: cb696e9befeafde47b97d2cd412831cc, type: 2}
-  - {fileID: 11400000, guid: 31e6cdda168d3d544bb3c2a0a311fa7b, type: 2}
-  - {fileID: 11400000, guid: 250e4fe93b8df8040a4686fe38a0aa79, type: 2}
   - {fileID: 11400000, guid: 862c515a87b044a4883ddb7f357834e2, type: 2}
   - {fileID: 11400000, guid: f94a526d6186c5a4bb064628ee64f83e, type: 2}
   - {fileID: 11400000, guid: 1bd9c7c83011ce04d83cd3d6b81d0c9b, type: 2}
+  - {fileID: 11400000, guid: cb696e9befeafde47b97d2cd412831cc, type: 2}
+  - {fileID: 11400000, guid: 093e711311b8330458a21cddc7bc3c84, type: 2}
+  - {fileID: 11400000, guid: e7e12f05b823dd54294c54f94661ca3b, type: 2}
+  - {fileID: 11400000, guid: 6dc2c167bb4d65e48b0623fa8b1ddff3, type: 2}
+  - {fileID: 11400000, guid: 0e745451ba8bcfc478a2a6188d8982eb, type: 2}
+  - {fileID: 11400000, guid: ebceb74770bc8194382e1d444c496aad, type: 2}
+  - {fileID: 11400000, guid: 4f4bcaef899bb994d99aba6f7b07b24f, type: 2}
+  - {fileID: 11400000, guid: 8e47efcba63cc2447a84413a9fc83841, type: 2}
+  - {fileID: 11400000, guid: 401db290e18f0c9428bb911018b03cda, type: 2}
+  - {fileID: 11400000, guid: d684336dc8f6a734ba2cb69969e8d1ad, type: 2}
   cardPrefab: {fileID: 6590258203101362768, guid: 17f25c8794375694da96037a40d13a05,
     type: 3}
 --- !u!1 &1503558193206510055
@@ -205,11 +206,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPhase: 0
-  maxPlayerHealth: 80
+  maxPlayerHealth: 100
   maxEnemyHealth: 80
-  startingMana: 4
-  maxMana: 10
-  startingCards: 4
+  startingMana: 2
+  maxMana: 8
+  startingCards: 6
   cardsPerTurn: 1
   discardPoint: {fileID: 958661232611203625}
 --- !u!1 &4807606469561754214
@@ -259,18 +260,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAIType: 1
   deckToUse:
-  - {fileID: 11400000, guid: e4a8c2c85e62e1542858d52913735230, type: 2}
-  - {fileID: 11400000, guid: c2c0e6568665165419357ffddef1e23d, type: 2}
   - {fileID: 11400000, guid: 0e745451ba8bcfc478a2a6188d8982eb, type: 2}
   - {fileID: 11400000, guid: e7e12f05b823dd54294c54f94661ca3b, type: 2}
   - {fileID: 11400000, guid: 6dc2c167bb4d65e48b0623fa8b1ddff3, type: 2}
   - {fileID: 11400000, guid: ebceb74770bc8194382e1d444c496aad, type: 2}
-  - {fileID: 11400000, guid: cb696e9befeafde47b97d2cd412831cc, type: 2}
   - {fileID: 11400000, guid: 31e6cdda168d3d544bb3c2a0a311fa7b, type: 2}
   - {fileID: 11400000, guid: 250e4fe93b8df8040a4686fe38a0aa79, type: 2}
   - {fileID: 11400000, guid: 862c515a87b044a4883ddb7f357834e2, type: 2}
   - {fileID: 11400000, guid: f94a526d6186c5a4bb064628ee64f83e, type: 2}
   - {fileID: 11400000, guid: 1bd9c7c83011ce04d83cd3d6b81d0c9b, type: 2}
+  - {fileID: 11400000, guid: 79436622236755148a9cf5e72fd0dfe8, type: 2}
+  - {fileID: 11400000, guid: a97d2f36d166af848b4d2238c4fdef3c, type: 2}
   cardToSpawn: {fileID: 8756169280392704348, guid: a365d1c2f152f5347b51d38c8d781863,
     type: 3}
   cardSpawnPoint: {fileID: 6021896060612998523}

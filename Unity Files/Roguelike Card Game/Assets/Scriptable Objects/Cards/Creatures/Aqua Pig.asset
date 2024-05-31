@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
   m_Name: Aqua Pig
   m_EditorClassIdentifier: 
-  cardName: Aqua Pig
+  cardName: Tree
   description: Decrease the Attack of all Fire creatures by 1.
   manaCost: 2
-  health: 6
-  attack: 3
+  health: 25
+  attack: 8
   cardType: 0
-  element: 0
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  element: 2
+  creatureModel: {fileID: 3724572471564977762, guid: 3869ca982ead0c54688e41291e691359,
     type: 3}

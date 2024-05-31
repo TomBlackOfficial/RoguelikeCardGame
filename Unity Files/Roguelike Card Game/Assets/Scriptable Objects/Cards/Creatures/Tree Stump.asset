@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Tree Stump
   description: This creature will not perform any action until 4 turns.
-  manaCost: 5
-  health: 35
-  attack: 1
+  manaCost: 4
+  health: 25
+  attack: 19
   cardType: 0
-  element: 0
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  element: 2
+  creatureModel: {fileID: 3466445828841550186, guid: bbebaf6d67d7ac9478d2f082bb9318be,
     type: 3}

@@ -15,10 +15,10 @@ MonoBehaviour:
   cardName: Spit-Fire
   description: A cute ol Fireball does 20 damage for 3 turns and then explodes killing
     itself.
-  manaCost: 4
+  manaCost: 2
   health: 6
   attack: 16
   cardType: 0
-  element: 0
-  creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
+  element: 1
+  creatureModel: {fileID: 6691946198352669137, guid: 8b7c745f67259254cbab02a7b3501af1,
     type: 3}

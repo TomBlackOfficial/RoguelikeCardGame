@@ -15,9 +15,9 @@ MonoBehaviour:
   cardName: Fire Pig
   description: Decrease the Attack of all Grass creatures by 1.
   manaCost: 2
-  health: 8
-  attack: 3
+  health: 10
+  attack: 2
   cardType: 0
-  element: 0
+  element: 1
   creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
     type: 3}
