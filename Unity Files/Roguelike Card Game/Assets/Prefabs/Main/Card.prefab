@@ -645,6 +645,15 @@ MonoBehaviour:
   creatureSpawnPoint: {fileID: 3375566875612068525}
   cardMesh: {fileID: 2153040293774284654}
   assignedPlace: {fileID: 0}
+  cardPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!65 &141992797556105894
 BoxCollider:
   m_ObjectHideFlags: 0
