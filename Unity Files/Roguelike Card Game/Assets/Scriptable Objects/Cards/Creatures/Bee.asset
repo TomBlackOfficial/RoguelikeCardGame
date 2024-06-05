@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Bee
   m_EditorClassIdentifier: 
   cardName: Buzzin Bee
-  description: The creature does not take any damage from adjancent lanes.
-  manaCost: 1
-  health: 14
-  attack: 5
+  description: The creature can attack any opposing creature ignoring lane restrictions
+  manaCost: 2
+  health: 24
+  attack: 8
   cardType: 0
   element: 2
   creatureModel: {fileID: 7448467212269597768, guid: f4bf7cf600e86114db7d7b20ccdd2c24,

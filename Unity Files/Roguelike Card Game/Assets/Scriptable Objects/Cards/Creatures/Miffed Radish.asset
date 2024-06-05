@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Miffed Radish
   m_EditorClassIdentifier: 
   cardName: Miffed Radish
-  description: This creature will not perform any action until 4 turns.
+  description: The creature attack is raised by +1 every turn.
   manaCost: 3
-  health: 21
+  health: 27
   attack: 13
   cardType: 0
   element: 2

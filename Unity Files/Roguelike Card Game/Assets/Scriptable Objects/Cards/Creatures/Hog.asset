@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Hog
   m_EditorClassIdentifier: 
   cardName: Hog
-  description: A rampaging Hog does a lot of damage but may suffer frim recoil from
-    his attacks.
+  description: Every offensive spell played on this creature doubles the attack power.
   manaCost: 3
-  health: 20
-  attack: 12
+  health: 35
+  attack: 15
   cardType: 0
-  element: 0
+  element: 1
   creatureModel: {fileID: 4698766645424424837, guid: 8feb0f1c274a83f40ac2665101120afc,
     type: 3}

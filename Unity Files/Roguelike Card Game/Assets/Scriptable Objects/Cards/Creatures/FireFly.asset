@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: FireFly
   m_EditorClassIdentifier: 
   cardName: Fire Fly
-  description: Decrease the Attack of all Grass creatures by 1.
+  description: Decrease the enemy's mana production by 1 for a turn.
   manaCost: 1
-  health: 12
-  attack: 7
+  health: 25
+  attack: 9
   cardType: 0
   element: 1
   creatureModel: {fileID: 8215003284720749345, guid: de547c06f495e104f9c9602a9786b36a,

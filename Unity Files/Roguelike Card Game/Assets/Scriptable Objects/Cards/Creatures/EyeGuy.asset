@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: EyeGuy
   m_EditorClassIdentifier: 
   cardName: Eye Guy
-  description: Can block all incoming attacks other than any attack from the opposing
-    element.
-  manaCost: 2
-  health: 18
+  description: Draw 2 cards for each of these creatures on your lanes.
+  manaCost: 1
+  health: 25
   attack: 9
   cardType: 0
   element: 1

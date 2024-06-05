@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Tree
   m_EditorClassIdentifier: 
   cardName: 'Tree '
-  description: This creature will not take any damage for 2 turns.
-  manaCost: 5
-  health: 35
+  description: The Creature is not affected by any stat changes
+  manaCost: 4
+  health: 45
   attack: 19
   cardType: 0
   element: 2

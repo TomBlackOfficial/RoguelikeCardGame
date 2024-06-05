@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
   m_Name: Earth Ellemental
   m_EditorClassIdentifier: 
-  cardName: Elemental Golem
-  description: Blocks any attacks from any adacent lanes
-  manaCost: 4
-  health: 24
-  attack: 8
+  cardName: Earth Golem
+  description: This creature increases the Hp of all friendly creatures placed by
+    +3.
+  manaCost: 3
+  health: 40
+  attack: 16
   cardType: 0
   element: 2
   creatureModel: {fileID: 1976535029654758083, guid: c5bcdd01ab4f36e4cae16265919c0412,

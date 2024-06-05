@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Spitfire
   m_EditorClassIdentifier: 
   cardName: Spit-Fire
-  description: A cute ol Fireball does 20 damage for 3 turns and then explodes killing
-    itself.
-  manaCost: 2
-  health: 6
-  attack: 16
+  description: Decrease attack power of the creature in the opposing lane by -2.
+  manaCost: 1
+  health: 28
+  attack: 11
   cardType: 0
   element: 1
   creatureModel: {fileID: 6691946198352669137, guid: 8b7c745f67259254cbab02a7b3501af1,
