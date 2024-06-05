@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CardPlacePoint : MonoBehaviour
 {
     public Card activeCard;
     public bool isPlayerPoint;
-<<<<<<< Updated upstream
-=======
+
     
     //Daniel's code
     private Card testCard;
     public CinemachineVirtualCamera pairedCamera;
     [SerializeField] private float cameraFocusTime = 3.0f;
+   
 
     private void Start()
     {
@@ -45,5 +46,5 @@ public class CardPlacePoint : MonoBehaviour
     {
         pairedCamera.Priority = 0;
     }
->>>>>>> Stashed changes
+
 }
