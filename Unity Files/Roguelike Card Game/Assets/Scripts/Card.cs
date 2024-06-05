@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     public CardScriptableObject cardSO;
 
     public int health { private set; get; }
+    public int maxHealth { private set; get; }
     public int attack { private set; get; }
     public int manaCost { private set; get; }
     public CardScriptableObject.Type cardType { private set; get; }
@@ -138,6 +139,7 @@ public class Card : MonoBehaviour
         {
             case CardScriptableObject.Type.Creature:
                 health = cardSO.health;
+                maxHealth = cardSO.health;
                 attack = cardSO.attack;
                 break;
             case CardScriptableObject.Type.Spell:
@@ -241,6 +243,38 @@ public class Card : MonoBehaviour
         UpdateCardDisplay();
     }
 
+    public void HealCard(int amount)
+    {
+        if (cardType == CardScriptableObject.Type.Spell)
+            return;
+
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+
+        UpdateCardDisplay();
+    }
+
+    public void BuffCard(int amountAttack, int amountHealth)
+    {
+        if (cardType == CardScriptableObject.Type.Spell)
+            return;
+
+        attack += amountAttack;
+        maxHealth += amountHealth;
+        health = Mathf.Clamp(health + amountHealth, 0, maxHealth);
+
+        UpdateCardDisplay();
+    }
+
+    public void DebuffCard(int amountAttack, int amountHealth)
+    {
+        BuffCard(-amountAttack, -amountHealth);
+    }
+
+    public void ReduceManaCost(int amount)
+    {
+        manaCost -= amount;
+    }
+
     public void MoveToPoint(Vector3 newPos, Quaternion newRot)
     {
         targetPos = newPos;
@@ -255,7 +289,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (inHand && isPlayer && !BattleController.instance.battleEnded)
+        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
         {
             MoveToPoint(controller.GetCardPositionX(handPosition) + new Vector3(0f, 0.2f, 0f), Quaternion.Euler(0, 0, 0));
         }

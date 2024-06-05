@@ -12,13 +12,14 @@ public class CardPlacePoint : MonoBehaviour
     //Daniel's code
     private Card testCard;
     public CinemachineVirtualCamera pairedCamera;
-    [SerializeField] private float cameraFocusTime = 3.0f;
+    private static float cameraFocusTime = 2f;
    
 
     private void Start()
     {
         Redo();
         pairedCamera.Priority = 0;
+        pairedCamera.LookAt = transform;
     }
 
     private void Update()
@@ -37,13 +38,16 @@ public class CardPlacePoint : MonoBehaviour
     
     public void SwitchCamera()
     {
+        Debug.Log("Test");
         pairedCamera.Priority = 20;
+        BattleController.instance.cameraMoving = true;
         Invoke("CameraOff", cameraFocusTime); 
 
     }
 
     private void CameraOff()
     {
+        BattleController.instance.cameraMoving = false;
         pairedCamera.Priority = 0;
     }
 

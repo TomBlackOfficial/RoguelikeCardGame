@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BuffEffect : Effect
+{
+    public int amountAttack;
+    public int amountHealth;
+    public bool affectAll;
+
+    public override bool OnUse(bool playedByPlayer, CardPlacePoint placePoint)
+    {
+        if (placePoint.activeCard == null)
+        {
+            BattleUIController.instance.ShowWarning(WARNING_LAND_EMPTY);
+            return false;
+        }
+
+        if (playedByPlayer && !placePoint.isPlayerPoint)
+        {
+            BattleUIController.instance.ShowWarning(WARNING_LAND_ENEMY);
+            return false;
+        }
+
+        placePoint.activeCard.BuffCard(amountAttack, amountHealth);
+        return true;
+    }
+}

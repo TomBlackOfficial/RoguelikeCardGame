@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Earth Ellemental
   m_EditorClassIdentifier: 
   cardName: Earth Golem
-  description: This creature increases the Hp of all friendly creatures placed by
-    +3.
+  description: This creature increases the HP of all friendly creatures on the board
+    by +3.
   manaCost: 3
   health: 40
   attack: 16

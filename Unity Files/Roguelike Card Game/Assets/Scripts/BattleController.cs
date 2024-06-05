@@ -40,6 +40,7 @@ public class BattleController : MonoBehaviour
     public int enemyHealth { private set; get; }
 
     public bool battleEnded { private set; get; }
+    public bool cameraMoving { set; get; }
 
     private void Awake()
     {
@@ -91,6 +92,16 @@ public class BattleController : MonoBehaviour
         }
 
         BattleUIController.instance.SetEnemyManaText(enemyMana);
+    }
+
+    public void AddPlayerMana(int amount)
+    {
+        SpendPlayerMana(-amount);
+    }
+
+    public void AddEnemyMana(int amount)
+    {
+        SpendEnemyMana(-amount);
     }
 
     public void FillPlayerMana()
@@ -223,7 +234,7 @@ public class BattleController : MonoBehaviour
 
     public bool CanPerformActions()
     {
-        if (currentPhase == TurnOrder.playerActive)
+        if (currentPhase == TurnOrder.playerActive && !cameraMoving)
         {
             return true;
         }
@@ -241,5 +252,15 @@ public class BattleController : MonoBehaviour
     public float EnemyHealthAmount()
     {
         return (float)enemyHealth / (float)maxEnemyHealth;
+    }
+
+    public void HealPlayer(int amount)
+    {
+        playerHealth = Mathf.Clamp(playerHealth + amount, 0, maxPlayerHealth);
+    }
+
+    public void HealEnemy(int amount)
+    {
+        playerHealth = Mathf.Clamp(playerHealth + amount, 0, maxPlayerHealth);
     }
 }
