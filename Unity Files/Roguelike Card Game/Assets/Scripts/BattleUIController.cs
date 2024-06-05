@@ -13,6 +13,7 @@ public class BattleUIController : MonoBehaviour
 
     [Header("Assign")]
     [SerializeField] private TMP_Text playerManaText;
+    [SerializeField] private TMP_Text playerLivesText;
     [SerializeField] private TMP_Text enemyManaText;
     [SerializeField] private Slider playerHealthSlider;
     [SerializeField] private Slider enemyHealthSlider;
@@ -89,5 +90,10 @@ public class BattleUIController : MonoBehaviour
         currentPopup = popupWarning;
         popupWarning.ShowPopup(warningText);
         popupCounter = popupTime;
+    }
+
+    public void UpdatePlayerLivesUI(int lives)
+    {
+        playerLivesText.text = "Lives: " + lives.ToString();
     }
 }
