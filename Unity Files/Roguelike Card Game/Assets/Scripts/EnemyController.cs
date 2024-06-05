@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public static EnemyController instance;
+    
+    public DeckScriptableObject enemyDeck;
 
     public enum AIType
     {
@@ -247,6 +249,18 @@ public class EnemyController : MonoBehaviour
                 }
 
                 break;
+        }
+
+        if (BattleController.instance.enemyHealth <= 0)
+        {
+            // Transfer a random card from enemy's deck to player's deck
+            if (enemyDeck.cards.Count > 0)
+            {
+                int randomIndex = Random.Range(0, enemyDeck.cards.Count);
+                CardScriptableObject transferredCard = enemyDeck.cards[randomIndex];
+                enemyDeck.cards.RemoveAt(randomIndex);
+                DeckController.instance.AddCardToDeck(transferredCard);
+            }
         }
 
         yield return new WaitForSeconds(0.5f);

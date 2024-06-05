@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class BattleController : MonoBehaviour
 {
     public static BattleController instance;
+    
+    public int playerLives { private set; get; } = 2; // Set the initial number of lives here
 
     public enum TurnOrder
     {
@@ -54,6 +57,8 @@ public class BattleController : MonoBehaviour
         BattleUIController.instance.UpdatePlayerHealthUI(PlayerHealthAmount());
         BattleUIController.instance.UpdateEnemyHealthUI(EnemyHealthAmount());
 
+        BattleUIController.instance.UpdatePlayerLivesUI(playerLives); // Initialize the lives UI
+        
         currentPlayerMaxMana = startingMana;
         currentEnemyMaxMana = startingMana;
         FillPlayerMana();
@@ -173,6 +178,8 @@ public class BattleController : MonoBehaviour
 
 
         }
+        
+        DeckController.instance.UpdateActiveCards();
     }
 
     public void EndPlayerTurn()
@@ -191,13 +198,34 @@ public class BattleController : MonoBehaviour
             if (playerHealth <= 0)
             {
                 playerHealth = 0;
-
+                playerLives--; // Decrement player lives
                 // End Battle
-                EndBattle(false);
+                //EndBattle(false);
+                if (playerLives > 0)
+                {
+                    // Reset player health and deck
+                    playerHealth = maxPlayerHealth;
+                    ResetPlayerDeck();
+                }
+                else
+                {
+                    // Player is out of lives, end the battle
+                    EndBattle(false);
+                }
             }
 
             BattleUIController.instance.UpdatePlayerHealthUI(PlayerHealthAmount());
         }
+        
+        BattleUIController.instance.UpdatePlayerLivesUI(playerLives); // Update the UI with the remaining lives
+    }
+
+    private void ResetPlayerDeck()
+    {
+        // Reset the player's deck to the initial state
+        DeckController.instance.ClearDeck();
+        DeckController.instance.DrawMultipleCards(BattleController.instance.startingCards);
+        currentPlayerMaxMana = startingMana; // Reset the player's mana
     }
 
     public void DamageEnemy(int amount)
