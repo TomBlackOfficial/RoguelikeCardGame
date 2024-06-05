@@ -15,9 +15,9 @@ MonoBehaviour:
   cardName: Miffed Radish
   description: The creature attack is raised by +1 every turn.
   manaCost: 3
-  health: 27
+  health: 24
   attack: 13
   cardType: 0
-  element: 2
   creatureModel: {fileID: 7214988284638652460, guid: c9eeb8e60b9ca1c4b8ff0674f880e7dc,
     type: 3}
+  effects: []

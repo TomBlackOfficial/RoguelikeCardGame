@@ -28,5 +28,5 @@ public class CardScriptableObject : ScriptableObject
     public GameObject creatureModel;
 
     [Space(10)]
-    public List<Effect> effects;
+    public List<Effect> effects = new List<Effect>();
 }

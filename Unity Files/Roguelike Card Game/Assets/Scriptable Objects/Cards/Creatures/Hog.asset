@@ -15,9 +15,9 @@ MonoBehaviour:
   cardName: Hog
   description: Every offensive spell played on this creature doubles the attack power.
   manaCost: 3
-  health: 35
-  attack: 15
+  health: 16
+  attack: 24
   cardType: 0
-  element: 1
   creatureModel: {fileID: 4698766645424424837, guid: 8feb0f1c274a83f40ac2665101120afc,
     type: 3}
+  effects: []

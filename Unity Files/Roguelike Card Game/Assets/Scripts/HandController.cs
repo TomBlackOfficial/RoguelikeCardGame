@@ -67,14 +67,18 @@ public class HandController : MonoBehaviour
         SetCardPositionsInHand();
     }
 
-    public void ReduceHandManaCost(int amount)
+    public void ReduceHandManaCost(int amount, Card cardToIgnore)
     {
         if (heldCards == null || heldCards.Count <= 0)
             return;
 
         foreach (Card card in heldCards)
         {
-            card.ReduceManaCost(amount);
+            if (card != cardToIgnore)
+            {
+                card.ReduceManaCost(amount);
+                card.UpdateCardDisplay();
+            }
         }
     }
 

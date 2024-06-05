@@ -15,9 +15,9 @@ MonoBehaviour:
   cardName: Boar
   description: Draw 2 cards upon it killing a creature in the enemy lane.
   manaCost: 2
-  health: 30
+  health: 22
   attack: 10
   cardType: 0
-  element: 1
   creatureModel: {fileID: 1954406165797268113, guid: a494d1a7d8791a242a525710ab3ddce6,
     type: 3}
+  effects: []

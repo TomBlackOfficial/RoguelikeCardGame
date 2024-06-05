@@ -94,6 +94,9 @@ public class BattleUIController : MonoBehaviour
 
     public void UpdatePlayerLivesUI(int lives)
     {
+        if (playerLivesText == null)
+            return;
+
         playerLivesText.text = "Lives: " + lives.ToString();
     }
 }

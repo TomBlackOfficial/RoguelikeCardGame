@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e159cab50f38c4d4c9f27ded31a3e344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDeck: {fileID: 0}
   enemyAIType: 1
   deckToUse:
   - {fileID: 11400000, guid: 0e745451ba8bcfc478a2a6188d8982eb, type: 2}
@@ -521,7 +522,7 @@ Transform:
   m_GameObject: {fileID: 8065364099490459374}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.469, z: -0.55300003}
+  m_LocalPosition: {x: 0, y: 1.469, z: -0.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -983,7 +984,7 @@ PrefabInstance:
     - target: {fileID: 2605701768715229073, guid: 3b3937a1a5ed9a249a8bca7793e69729,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.395
+      value: -0.407
       objectReference: {fileID: 0}
     - target: {fileID: 2605701768715229073, guid: 3b3937a1a5ed9a249a8bca7793e69729,
         type: 3}
@@ -1415,7 +1416,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1431,7 +1432,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1447,7 +1448,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1694,7 +1695,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ef54bb8885225db49b2da56123931667, type: 2}
+      objectReference: {fileID: 2100000, guid: eec1614d0d595594e9ad01a3a65fcb6e, type: 2}
     - target: {fileID: -5477749408508380018, guid: ad8fd305fec59af4da0c3609d9d0ffbe,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1714,7 +1715,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: eec1614d0d595594e9ad01a3a65fcb6e, type: 2}
+      objectReference: {fileID: 2100000, guid: ef54bb8885225db49b2da56123931667, type: 2}
     - target: {fileID: -3274006528333456403, guid: ad8fd305fec59af4da0c3609d9d0ffbe,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1734,12 +1735,12 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ef54bb8885225db49b2da56123931667, type: 2}
+      objectReference: {fileID: 2100000, guid: eec1614d0d595594e9ad01a3a65fcb6e, type: 2}
     - target: {fileID: 327064008815436722, guid: ad8fd305fec59af4da0c3609d9d0ffbe,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: eec1614d0d595594e9ad01a3a65fcb6e, type: 2}
+      objectReference: {fileID: 2100000, guid: ef54bb8885225db49b2da56123931667, type: 2}
     - target: {fileID: 919132149155446097, guid: ad8fd305fec59af4da0c3609d9d0ffbe,
         type: 3}
       propertyPath: m_Name
@@ -2613,7 +2614,7 @@ PrefabInstance:
     - target: {fileID: 1631298388644346372, guid: c4a5153eb49760a41baa6add7a36707f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.374
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 1631298388644346372, guid: c4a5153eb49760a41baa6add7a36707f,
         type: 3}

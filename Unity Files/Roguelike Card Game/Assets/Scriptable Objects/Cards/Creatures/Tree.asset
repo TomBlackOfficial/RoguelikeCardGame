@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Tree
   m_EditorClassIdentifier: 
   cardName: 'Tree '
-  description: The Creature is not affected by any stat changes
+  description: The Creature is not affected by any stat changes.
   manaCost: 4
-  health: 45
-  attack: 19
+  health: 35
+  attack: 16
   cardType: 0
-  element: 2
   creatureModel: {fileID: 1472291851105863000, guid: 4f3b47bd8379ee143bbd0f7f08b51f22,
     type: 3}
+  effects: []

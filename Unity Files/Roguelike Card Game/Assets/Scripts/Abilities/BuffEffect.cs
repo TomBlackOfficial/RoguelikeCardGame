@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "NewBuffEffect", menuName = "Effects/Buff", order = 1)]
 public class BuffEffect : Effect
 {
     public int amountAttack;
-    public int amountHealth;
+    public int amountDefense;
     public bool affectAll;
 
-    public override bool OnUse(bool playedByPlayer, CardPlacePoint placePoint)
+    public override bool OnUse(bool playedByPlayer, CardPlacePoint placePoint, Card cardPlayed)
     {
         if (placePoint.activeCard == null)
         {
@@ -22,7 +23,22 @@ public class BuffEffect : Effect
             return false;
         }
 
-        placePoint.activeCard.BuffCard(amountAttack, amountHealth);
+        if (affectAll)
+        {
+            foreach (CardPlacePoint point in CardPointsController.instance.playerCardPoints)
+            {
+                if (point.activeCard != null)
+                {
+                    point.activeCard.BuffCard(amountAttack, amountDefense);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Test2");
+            placePoint.activeCard.BuffCard(amountAttack, amountDefense);
+        }
+
         return true;
     }
 }

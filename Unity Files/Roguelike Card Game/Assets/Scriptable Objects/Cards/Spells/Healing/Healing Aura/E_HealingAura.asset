@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Mana Surge
+  m_Script: {fileID: 11500000, guid: 9f98c97a74185494a814fffd0ad8316f, type: 3}
+  m_Name: E_HealingAura
   m_EditorClassIdentifier: 
-  cardName: Suicide
-  description: Spend all your unused mana to heal the Player's HP.
-  manaCost: 4
-  health: 0
-  attack: 0
-  cardType: 0
-  element: 0
-  creatureModel: {fileID: 0}
+  amount: 12
+  affectAll: 1

@@ -198,26 +198,25 @@ public class BattleController : MonoBehaviour
             if (playerHealth <= 0)
             {
                 playerHealth = 0;
-                playerLives--; // Decrement player lives
-                // End Battle
-                //EndBattle(false);
-                if (playerLives > 0)
-                {
-                    // Reset player health and deck
-                    playerHealth = maxPlayerHealth;
-                    ResetPlayerDeck();
-                }
-                else
-                {
-                    // Player is out of lives, end the battle
-                    EndBattle(false);
-                }
+                //playerLives--; // Decrement player lives
+                EndBattle(false);
+                //if (playerLives > 0)
+                //{
+                //    // Reset player health and deck
+                //    playerHealth = maxPlayerHealth;
+                //    ResetPlayerDeck();
+                //}
+                //else
+                //{
+                //    // Player is out of lives, end the battle
+                //    EndBattle(false);
+                //}
             }
 
             BattleUIController.instance.UpdatePlayerHealthUI(PlayerHealthAmount());
         }
         
-        BattleUIController.instance.UpdatePlayerLivesUI(playerLives); // Update the UI with the remaining lives
+        //BattleUIController.instance.UpdatePlayerLivesUI(playerLives); // Update the UI with the remaining lives
     }
 
     private void ResetPlayerDeck()

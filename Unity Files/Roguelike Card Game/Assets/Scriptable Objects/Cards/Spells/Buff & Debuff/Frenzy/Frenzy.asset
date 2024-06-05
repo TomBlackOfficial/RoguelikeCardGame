@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Creature Draw
+  m_Name: Frenzy
   m_EditorClassIdentifier: 
-  cardName: Creature Draw
-  description: For every friendly creature on the board,draw equivalent number of
-    cards.
+  cardName: Frenzy
+  description: All your creatures gain +5 Attack
   manaCost: 2
-  health: 1
-  attack: 1
+  health: 0
+  attack: 0
   cardType: 1
-  element: 0
   creatureModel: {fileID: 0}
+  effects:
+  - {fileID: 11400000, guid: 986554c016123c64e9cfcd1abe486e5e, type: 2}
