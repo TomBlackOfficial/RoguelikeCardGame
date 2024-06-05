@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CardPointsController : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class CardPointsController : MonoBehaviour
 
         for (int i = 0; i < playerCardPoints.Length; i++)
         {
+
+
             if (playerCardPoints[i].activeCard != null)
             {
                 if (enemyCardPoints[i].activeCard != null)
@@ -37,6 +40,9 @@ public class CardPointsController : MonoBehaviour
                     // Attack the enemy hero
                     BattleController.instance.DamageEnemy(playerCardPoints[i].activeCard.attack);
                 }
+
+                //Daniel's code
+                playerCardPoints[i].SwitchCamera();
 
                 playerCardPoints[i].activeCard.SetAnimTrigger("Attack");
 
@@ -65,6 +71,7 @@ public class CardPointsController : MonoBehaviour
 
         for (int i = 0; i < enemyCardPoints.Length; i++)
         {
+
             if (enemyCardPoints[i].activeCard != null)
             {
                 if (playerCardPoints[i].activeCard != null)
@@ -77,6 +84,9 @@ public class CardPointsController : MonoBehaviour
                     // Attack the player hero
                     BattleController.instance.DamagePlayer(enemyCardPoints[i].activeCard.attack);
                 }
+
+                //Daniel's code
+                enemyCardPoints[i].SwitchCamera();
 
                 enemyCardPoints[i].activeCard.SetAnimTrigger("Attack");
 
