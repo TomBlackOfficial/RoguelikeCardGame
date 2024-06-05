@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Rejuvenation
+  m_Name: Rejuvenating Aura
   m_EditorClassIdentifier: 
-  cardName: 'Rejuvenation '
-  description: It heals one creature for a significant amount of health.
-  manaCost: 3
+  cardName: Rejuvenating Aura
+  description: All your creatures gain "Regen" (gain a large amount of health at
+    the start of your turn) until the end of the turn
+  manaCost: 4
   health: 0
   attack: 0
   cardType: 1

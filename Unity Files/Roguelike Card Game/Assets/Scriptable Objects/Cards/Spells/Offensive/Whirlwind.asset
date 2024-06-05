@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Empowering Flame
+  m_Name: Whirlwind
   m_EditorClassIdentifier: 
-  cardName: Empowering Flame
-  description: Target all friendly Fire creatures. Grant them +1 Attack [STACKABLE] 
-    until the end of the turn.
-  manaCost: 2
+  cardName: Whirwind
+  description: Allows a chosen creature to ignore lane restrictions and attack any
+    enemy creature.
+  manaCost: 3
   health: 0
   attack: 0
   cardType: 1
   element: 0
+  creatureModel: {fileID: 0}

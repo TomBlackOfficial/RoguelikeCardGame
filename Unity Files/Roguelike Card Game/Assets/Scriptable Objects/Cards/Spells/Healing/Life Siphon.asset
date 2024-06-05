@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
   m_Name: Life Siphon
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 'This card sacrifices a small amount of health from one creature and
-    distributes that health evenly amongst all your remaining creatures. This is
-    a riskier option for players who want to keep their entire board healthy but
-    don''t mind sacrificing some health from one creature. '
-  manaCost: 4
+  cardName: Life Siphon
+  description: This card sacrifices a moderate amount of health from one creature
+    and distributes that health evenly amongst all your remaining creatures
+  manaCost: 3
   health: 0
   attack: 0
   cardType: 1

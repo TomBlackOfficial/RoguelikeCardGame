@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Rejuvenation
+  m_Name: Camouflage
   m_EditorClassIdentifier: 
-  cardName: 'Rejuvenation '
-  description: It heals one creature for a significant amount of health.
-  manaCost: 3
+  cardName: Camouflage
+  description: Target creature cannot be targeted by spells or abilities until the
+    end of the turn.
+  manaCost: 2
   health: 0
   attack: 0
-  cardType: 1
+  cardType: 0
   element: 0
   creatureModel: {fileID: 0}

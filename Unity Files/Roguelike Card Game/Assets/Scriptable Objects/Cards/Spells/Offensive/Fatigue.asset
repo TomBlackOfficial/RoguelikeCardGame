@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Lull
+  m_Name: Fatigue
   m_EditorClassIdentifier: 
-  cardName: Lull
-  description: Target an enemy creature. Force it to skip its next turn.
-  manaCost: 1
+  cardName: Fatigue
+  description: Deal 2 damage to your opponent. Draw 2 card for yourself, but also
+    discard 1 card
+  manaCost: 3
   health: 0
   attack: 0
   cardType: 1
   element: 0
+  creatureModel: {fileID: 0}

@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Flying Strike
+  m_Name: Frenzy
   m_EditorClassIdentifier: 
-  cardName: Flying Strike
-  description: Allows a chosen creature to ignore lane restrictions and attack any
-    enemy creature.
-  manaCost: 3
+  cardName: Frenzy
+  description: Target creature gains +2 Attack but cannot attack next turn.
+  manaCost: 2
   health: 0
-  attack: 4
+  attack: 0
   cardType: 1
   element: 0
   creatureModel: {fileID: 0}
