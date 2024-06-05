@@ -62,7 +62,7 @@ public class DeckController : MonoBehaviour
 
     public void DrawCardToHand()
     {
-        if (activeCards.Count == 0)
+        if (activeCards.Count <= 0)
         {
             SetupDeck();
         }
@@ -77,12 +77,10 @@ public class DeckController : MonoBehaviour
 
             HandController.instance.AddCardToHand(newCard);
         }
-
         else
         {
             Debug.LogWarning("No cards available to draw.");
         }
-
     }
 
     public void DrawMultipleCards(int amountToDraw)

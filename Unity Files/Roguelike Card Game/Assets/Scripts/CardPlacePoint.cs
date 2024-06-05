@@ -38,7 +38,6 @@ public class CardPlacePoint : MonoBehaviour
     
     public void SwitchCamera()
     {
-        Debug.Log("Test");
         pairedCamera.Priority = 20;
         BattleController.instance.cameraMoving = true;
         Invoke("CameraOff", cameraFocusTime); 

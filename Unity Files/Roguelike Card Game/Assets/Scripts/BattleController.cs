@@ -44,6 +44,7 @@ public class BattleController : MonoBehaviour
 
     public bool battleEnded { private set; get; }
     public bool cameraMoving { set; get; }
+    public bool cardSelected { set; get; }
 
     private void Awake()
     {
@@ -147,6 +148,7 @@ public class BattleController : MonoBehaviour
 
                 FillPlayerMana();
 
+                HandController.instance.ResetHandManaCost();
                 DeckController.instance.DrawMultipleCards(cardsPerTurn);
 
                 break;
@@ -176,10 +178,7 @@ public class BattleController : MonoBehaviour
 
                 break;
 
-
         }
-        
-        DeckController.instance.UpdateActiveCards();
     }
 
     public void EndPlayerTurn()

@@ -11,31 +11,36 @@ public class BuffEffect : Effect
 
     public override bool OnUse(bool playedByPlayer, CardPlacePoint placePoint, Card cardPlayed)
     {
-        if (placePoint.activeCard == null)
+        if (affectAll)
+        {
+            if (CardPointsController.instance.PlayerCreatureCount() <= 0)
+            {
+                BattleUIController.instance.ShowWarning(WARNING_CREATURES_PLAYER);
+                return false;
+            }
+            else
+            {
+                foreach (CardPlacePoint point in CardPointsController.instance.playerCardPoints)
+                {
+                    if (point.activeCard != null)
+                    {
+                        point.activeCard.BuffCard(amountAttack, amountDefense);
+                    }
+                }
+            }
+        }
+        else if (placePoint.activeCard == null)
         {
             BattleUIController.instance.ShowWarning(WARNING_LAND_EMPTY);
             return false;
         }
-
-        if (playedByPlayer && !placePoint.isPlayerPoint)
+        else if (playedByPlayer && !placePoint.isPlayerPoint)
         {
             BattleUIController.instance.ShowWarning(WARNING_LAND_ENEMY);
             return false;
         }
-
-        if (affectAll)
-        {
-            foreach (CardPlacePoint point in CardPointsController.instance.playerCardPoints)
-            {
-                if (point.activeCard != null)
-                {
-                    point.activeCard.BuffCard(amountAttack, amountDefense);
-                }
-            }
-        }
         else
         {
-            Debug.Log("Test2");
             placePoint.activeCard.BuffCard(amountAttack, amountDefense);
         }
 
