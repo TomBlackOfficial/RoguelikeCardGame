@@ -82,6 +82,15 @@ public class HandController : MonoBehaviour
         }
     }
 
+    public void ResetHandManaCost()
+    {
+        foreach (Card card in heldCards)
+        {
+            card.ResetManaCost();
+            card.UpdateCardDisplay();
+        }
+    }
+
     public Vector3 GetCardPositionX(int index)
     {
         return new Vector3(cardPositions[index].x, spawnPoint.position.y, spawnPoint.position.z);

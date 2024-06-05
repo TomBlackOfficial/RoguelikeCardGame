@@ -15,6 +15,7 @@ public class Card : MonoBehaviour
     public int maxHealth { private set; get; }
     public int attack { private set; get; }
     public int manaCost { private set; get; }
+    public int originalManaCost { private set; get; }
     public CardScriptableObject.Type cardType { private set; get; }
 
     [Header("Settings")]
@@ -162,6 +163,7 @@ public class Card : MonoBehaviour
         }
 
         manaCost = cardSO.manaCost;
+        originalManaCost = cardSO.manaCost;
 
         UpdateCardDisplay();
 
@@ -203,6 +205,8 @@ public class Card : MonoBehaviour
 
     private void PlaceCard(CardPlacePoint placementPoint)
     {
+        BattleController.instance.cardSelected = false;
+
         placementPoint.activeCard = this;
         assignedPlace = placementPoint;
 
@@ -231,6 +235,8 @@ public class Card : MonoBehaviour
                 return false;
             }
         }
+
+        BattleController.instance.cardSelected = false;
 
         inHand = false;
         isSelected = false;
@@ -315,6 +321,11 @@ public class Card : MonoBehaviour
         manaCost -= amount;
     }
 
+    public void ResetManaCost()
+    {
+        manaCost = originalManaCost;
+    }
+
     public void MoveToPoint(Vector3 newPos, Quaternion newRot)
     {
         targetPos = newPos;
@@ -329,7 +340,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
+        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions() && !BattleController.instance.cardSelected)
         {
             MoveToPoint(controller.GetCardPositionX(handPosition) + new Vector3(0f, 0.2f, 0f), Quaternion.Euler(0, 0, 0));
         }
@@ -337,7 +348,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (inHand && isPlayer && !BattleController.instance.battleEnded)
+        if (inHand && isPlayer && !BattleController.instance.battleEnded && !BattleController.instance.cardSelected)
         {
             MoveToPoint(controller.cardPositions[handPosition], controller.cardRotations[handPosition]);
         }
@@ -345,16 +356,18 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
+        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions() && !BattleController.instance.cardSelected)
         {
             justPressed = true;
             isSelected = true;
             col.enabled = false;
+            BattleController.instance.cardSelected = true;
         }
     }
     
     public void ReturnToHand()
     {
+        BattleController.instance.cardSelected = false;
         isSelected = false;
         col.enabled = true;
 
