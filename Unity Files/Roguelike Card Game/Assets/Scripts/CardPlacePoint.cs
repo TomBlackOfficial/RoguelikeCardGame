@@ -7,16 +7,19 @@ public class CardPlacePoint : MonoBehaviour
 {
     public Card activeCard;
     public bool isPlayerPoint;
+
     
     //Daniel's code
     private Card testCard;
-    [SerializeField] private CinemachineVirtualCamera pairedCamera;
-    [SerializeField] private float cameraFocusTime = 3.0f;
+    public CinemachineVirtualCamera pairedCamera;
+    private static float cameraFocusTime = 2f;
+   
 
     private void Start()
     {
         Redo();
         pairedCamera.Priority = 0;
+        pairedCamera.LookAt = transform;
     }
 
     private void Update()
@@ -33,15 +36,18 @@ public class CardPlacePoint : MonoBehaviour
         testCard = activeCard;
     }
     
-    private void SwitchCamera()
+    public void SwitchCamera()
     {
         pairedCamera.Priority = 20;
+        BattleController.instance.cameraMoving = true;
         Invoke("CameraOff", cameraFocusTime); 
 
     }
 
     private void CameraOff()
     {
+        BattleController.instance.cameraMoving = false;
         pairedCamera.Priority = 0;
     }
+
 }

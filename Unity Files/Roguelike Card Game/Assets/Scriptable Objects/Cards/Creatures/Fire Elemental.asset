@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Fire Elemental
   m_EditorClassIdentifier: 
   cardName: Fire Golem
-  description: Blocks any attacks from any adacent lanes
+  description: This Creature increases the attack of all friendly creatures placed
+    by +3.
   manaCost: 4
-  health: 24
-  attack: 9
+  health: 26
+  attack: 18
   cardType: 0
-  element: 1
   creatureModel: {fileID: 2781145897083014952, guid: d848f0232e2d41f4bb6ee59f18ddede0,
     type: 3}
+  effects: []

@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 0.02, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.65, y: 0.020000001, z: 2.7}
+  m_Center: {x: 0, y: 0, z: -0.3}
 --- !u!114 &728736848518034035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeCard: {fileID: 0}
   isPlayerPoint: 1
+  pairedCamera: {fileID: 0}
 --- !u!1 &5078481952904968278
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7922459905904529028
 Transform:
   m_ObjectHideFlags: 0

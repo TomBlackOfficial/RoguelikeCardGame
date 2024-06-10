@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public static EnemyController instance;
+    
+    public DeckScriptableObject enemyDeck;
 
     public enum AIType
     {
@@ -21,7 +23,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Card cardToSpawn;
     [SerializeField] private Transform cardSpawnPoint;
 
-    private List<CardScriptableObject> cardsInHand = new List<CardScriptableObject>();
+    public List<CardScriptableObject> cardsInHand = new List<CardScriptableObject>();
 
     private void Awake()
     {
@@ -76,13 +78,7 @@ public class EnemyController : MonoBehaviour
         {
             for (int i = 0; i < BattleController.instance.cardsPerTurn; i++)
             {
-                cardsInHand.Add(activeCards[0]);
-                activeCards.RemoveAt(0);
-
-                if (activeCards.Count == 0)
-                {
-                    SetupDeck();
-                }
+                DrawMultipleCards(BattleController.instance.cardsPerTurn);
             }
         }
 
@@ -255,9 +251,43 @@ public class EnemyController : MonoBehaviour
                 break;
         }
 
+        if (BattleController.instance.enemyHealth <= 0)
+        {
+            // Transfer a random card from enemy's deck to player's deck
+            if (enemyDeck.cards.Count > 0)
+            {
+                int randomIndex = Random.Range(0, enemyDeck.cards.Count);
+                CardScriptableObject transferredCard = enemyDeck.cards[randomIndex];
+                enemyDeck.cards.RemoveAt(randomIndex);
+                DeckController.instance.AddCardToDeck(transferredCard);
+            }
+        }
+
         yield return new WaitForSeconds(0.5f);
 
         BattleController.instance.AdvanceTurn();
+    }
+
+    public void DrawCardToHand()
+    {
+        if (activeCards.Count == 0)
+        {
+            SetupDeck();
+        }
+
+        cardsInHand.Add(activeCards[0]);
+        activeCards.RemoveAt(0);
+    }
+
+    public void DrawMultipleCards(int amountToDraw)
+    {
+        if (amountToDraw < 1)
+            return;
+
+        for (int i = 0; i < amountToDraw; i++)
+        {
+            DrawCardToHand();
+        }
     }
 
     private void SetupHand()

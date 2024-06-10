@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class BattleController : MonoBehaviour
 {
     public static BattleController instance;
+    
+    public int playerLives { private set; get; } = 2; // Set the initial number of lives here
 
     public enum TurnOrder
     {
@@ -40,6 +43,8 @@ public class BattleController : MonoBehaviour
     public int enemyHealth { private set; get; }
 
     public bool battleEnded { private set; get; }
+    public bool cameraMoving { set; get; }
+    public bool cardSelected { set; get; }
 
     private void Awake()
     {
@@ -53,6 +58,8 @@ public class BattleController : MonoBehaviour
         BattleUIController.instance.UpdatePlayerHealthUI(PlayerHealthAmount());
         BattleUIController.instance.UpdateEnemyHealthUI(EnemyHealthAmount());
 
+        BattleUIController.instance.UpdatePlayerLivesUI(playerLives); // Initialize the lives UI
+        
         currentPlayerMaxMana = startingMana;
         currentEnemyMaxMana = startingMana;
         FillPlayerMana();
@@ -93,6 +100,16 @@ public class BattleController : MonoBehaviour
         BattleUIController.instance.SetEnemyManaText(enemyMana);
     }
 
+    public void AddPlayerMana(int amount)
+    {
+        SpendPlayerMana(-amount);
+    }
+
+    public void AddEnemyMana(int amount)
+    {
+        SpendEnemyMana(-amount);
+    }
+
     public void FillPlayerMana()
     {
         playerMana = currentPlayerMaxMana;
@@ -131,6 +148,7 @@ public class BattleController : MonoBehaviour
 
                 FillPlayerMana();
 
+                HandController.instance.ResetHandManaCost();
                 DeckController.instance.DrawMultipleCards(cardsPerTurn);
 
                 break;
@@ -160,7 +178,6 @@ public class BattleController : MonoBehaviour
 
                 break;
 
-
         }
     }
 
@@ -180,13 +197,33 @@ public class BattleController : MonoBehaviour
             if (playerHealth <= 0)
             {
                 playerHealth = 0;
-
-                // End Battle
+                //playerLives--; // Decrement player lives
                 EndBattle(false);
+                //if (playerLives > 0)
+                //{
+                //    // Reset player health and deck
+                //    playerHealth = maxPlayerHealth;
+                //    ResetPlayerDeck();
+                //}
+                //else
+                //{
+                //    // Player is out of lives, end the battle
+                //    EndBattle(false);
+                //}
             }
 
             BattleUIController.instance.UpdatePlayerHealthUI(PlayerHealthAmount());
         }
+        
+        //BattleUIController.instance.UpdatePlayerLivesUI(playerLives); // Update the UI with the remaining lives
+    }
+
+    private void ResetPlayerDeck()
+    {
+        // Reset the player's deck to the initial state
+        DeckController.instance.ClearDeck();
+        DeckController.instance.DrawMultipleCards(BattleController.instance.startingCards);
+        currentPlayerMaxMana = startingMana; // Reset the player's mana
     }
 
     public void DamageEnemy(int amount)
@@ -223,7 +260,7 @@ public class BattleController : MonoBehaviour
 
     public bool CanPerformActions()
     {
-        if (currentPhase == TurnOrder.playerActive)
+        if (currentPhase == TurnOrder.playerActive && !cameraMoving)
         {
             return true;
         }
@@ -241,5 +278,15 @@ public class BattleController : MonoBehaviour
     public float EnemyHealthAmount()
     {
         return (float)enemyHealth / (float)maxEnemyHealth;
+    }
+
+    public void HealPlayer(int amount)
+    {
+        playerHealth = Mathf.Clamp(playerHealth + amount, 0, maxPlayerHealth);
+    }
+
+    public void HealEnemy(int amount)
+    {
+        playerHealth = Mathf.Clamp(playerHealth + amount, 0, maxPlayerHealth);
     }
 }

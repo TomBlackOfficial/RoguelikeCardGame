@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
+  m_Name: Skip Turn
+  m_EditorClassIdentifier: 
+  cardName: Skip Turn
+  description: Target an enemy creature. Force it to skip its next turn.
+  manaCost: 1
+  health: 0
+  attack: 0
+  cardType: 0
+  element: 0
+  creatureModel: {fileID: 0}

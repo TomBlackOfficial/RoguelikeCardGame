@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CardPointsController : MonoBehaviour
 {
     public static CardPointsController instance;
 
     public CardPlacePoint[] playerCardPoints, enemyCardPoints;
-    public float timeBetweenAttacks = 0.25f;
+    public float timeBetweenAttacks = 1f;
 
     private void Awake()
     {
@@ -21,12 +22,18 @@ public class CardPointsController : MonoBehaviour
 
     IEnumerator PlayerAttackCoroutine()
     {
-        yield return new WaitForSeconds(timeBetweenAttacks);
+        yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i < playerCardPoints.Length; i++)
         {
             if (playerCardPoints[i].activeCard != null)
             {
+                playerCardPoints[i].SwitchCamera();
+
+                yield return new WaitForSeconds(timeBetweenAttacks);
+
+                playerCardPoints[i].activeCard.SetAnimTrigger("Attack");
+
                 if (enemyCardPoints[i].activeCard != null)
                 {
                     // Attack the enemy card
@@ -37,10 +44,6 @@ public class CardPointsController : MonoBehaviour
                     // Attack the enemy hero
                     BattleController.instance.DamageEnemy(playerCardPoints[i].activeCard.attack);
                 }
-
-                playerCardPoints[i].activeCard.SetAnimTrigger("Attack");
-
-                yield return new WaitForSeconds(timeBetweenAttacks);
             }
 
             if (BattleController.instance.battleEnded)
@@ -50,6 +53,8 @@ public class CardPointsController : MonoBehaviour
         }
 
         CheckAssignedCards();
+
+        yield return new WaitForSeconds(timeBetweenAttacks);
 
         BattleController.instance.AdvanceTurn();
     }
@@ -61,12 +66,16 @@ public class CardPointsController : MonoBehaviour
 
     IEnumerator EnemyAttackCoroutine()
     {
-        yield return new WaitForSeconds(timeBetweenAttacks);
-
         for (int i = 0; i < enemyCardPoints.Length; i++)
         {
             if (enemyCardPoints[i].activeCard != null)
             {
+                enemyCardPoints[i].SwitchCamera();
+
+                yield return new WaitForSeconds(timeBetweenAttacks);
+
+                enemyCardPoints[i].activeCard.SetAnimTrigger("Attack");
+
                 if (playerCardPoints[i].activeCard != null)
                 {
                     // Attack the player card
@@ -77,10 +86,6 @@ public class CardPointsController : MonoBehaviour
                     // Attack the player hero
                     BattleController.instance.DamagePlayer(enemyCardPoints[i].activeCard.attack);
                 }
-
-                enemyCardPoints[i].activeCard.SetAnimTrigger("Attack");
-
-                yield return new WaitForSeconds(timeBetweenAttacks);
             }
 
             if (BattleController.instance.battleEnded)
@@ -90,6 +95,8 @@ public class CardPointsController : MonoBehaviour
         }
 
         CheckAssignedCards();
+
+        yield return new WaitForSeconds(timeBetweenAttacks);
 
         BattleController.instance.AdvanceTurn();
     }
@@ -117,5 +124,35 @@ public class CardPointsController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public int PlayerCreatureCount()
+    {
+        int count = 0;
+
+        foreach(CardPlacePoint point in playerCardPoints)
+        {
+            if (point.activeCard != null)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public int EnemyCreatureCount()
+    {
+        int count = 0;
+
+        foreach (CardPlacePoint point in enemyCardPoints)
+        {
+            if (point.activeCard != null)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 }

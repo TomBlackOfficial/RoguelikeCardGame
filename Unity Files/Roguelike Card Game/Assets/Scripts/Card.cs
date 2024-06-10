@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Card : MonoBehaviour
 {
     private static string WARNING_MANA = "Not enough Mana to perform this action.";
+    private static string WARNING_OCCUPIED = "This land is occupied by another creature.";
 
     public CardScriptableObject cardSO;
 
     public int health { private set; get; }
+    public int maxHealth { private set; get; }
     public int attack { private set; get; }
     public int manaCost { private set; get; }
+    public int originalManaCost { private set; get; }
     public CardScriptableObject.Type cardType { private set; get; }
 
     [Header("Settings")]
@@ -32,6 +36,11 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text cardTypeText;
     [SerializeField] private Transform creatureSpawnPoint;
     [SerializeField] private GameObject cardMesh;
+    [SerializeField] private GameObject creatureCanvas;
+    [SerializeField] private TMP_Text creatureAttackText;
+    [SerializeField] private TMP_Text creatureHealthText;
+    [SerializeField] private TMP_Text creatureMaxHealthText;
+    [SerializeField] private Slider creatureHealthSlider;
 
     [HideInInspector] public CardPlacePoint assignedPlace;
 
@@ -60,6 +69,9 @@ public class Card : MonoBehaviour
             targetRot = transform.rotation;
         }
 
+        if (creatureCanvas.activeInHierarchy)
+            creatureCanvas.SetActive(false);
+
         SetupCard();
     }
 
@@ -78,45 +90,48 @@ public class Card : MonoBehaviour
                 MoveToPoint(hit.point + new Vector3(0f, 0.05f, 0f), Quaternion.identity);
             }
 
-            if (cardType == CardScriptableObject.Type.Spell)
+            if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded)
             {
-                if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
-                    PlaySpell();
-            }
-            else if (cardType == CardScriptableObject.Type.Creature)
-            {
-                if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded)
+                if (Physics.Raycast(ray, out hit, 100f, placementMask) && BattleController.instance.CanPerformActions())
                 {
-                    if (Physics.Raycast(ray, out hit, 100f, placementMask) && BattleController.instance.CanPerformActions())
-                    {
-                        CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
+                    CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
 
-                        if (selectedPoint.activeCard == null && selectedPoint.isPlayerPoint)
+                    if (BattleController.instance.playerMana >= manaCost)
+                    {
+                        if (cardType == CardScriptableObject.Type.Spell)
                         {
-                            if (BattleController.instance.playerMana >= manaCost)
+                            if (PlaySpell(selectedPoint))
                             {
-                                // Successfully clicked on a valid placement point
-                                PlaceCard(selectedPoint);
+                                Destroy(gameObject);
                             }
                             else
                             {
-                                // Player doesn't have enough mana
                                 ReturnToHand();
-
-                                BattleUIController.instance.ShowWarning(WARNING_MANA);
                             }
                         }
                         else
                         {
-                            // Selected placement point is full or isn't for the player
-                            ReturnToHand();
+                            if (selectedPoint.activeCard == null && selectedPoint.isPlayerPoint)
+                            {
+                                PlaceCard(selectedPoint);
+                            }
+                            else
+                            {
+                                ReturnToHand();
+                                BattleUIController.instance.ShowWarning(WARNING_OCCUPIED);
+                            }
                         }
                     }
                     else
                     {
-                        // Player didn't click on any placement point or it's not their action turn
                         ReturnToHand();
+                        BattleUIController.instance.ShowWarning(WARNING_MANA);
                     }
+                }
+                else
+                {
+                    // Player didn't click on any placement point or it's not their action turn
+                    ReturnToHand();
                 }
             }
 
@@ -138,6 +153,7 @@ public class Card : MonoBehaviour
         {
             case CardScriptableObject.Type.Creature:
                 health = cardSO.health;
+                maxHealth = cardSO.health;
                 attack = cardSO.attack;
                 break;
             case CardScriptableObject.Type.Spell:
@@ -147,6 +163,7 @@ public class Card : MonoBehaviour
         }
 
         manaCost = cardSO.manaCost;
+        originalManaCost = cardSO.manaCost;
 
         UpdateCardDisplay();
 
@@ -173,8 +190,23 @@ public class Card : MonoBehaviour
         costText.text = manaCost.ToString();
     }
 
+    public void UpdateCreatureCanvas()
+    {
+        creatureAttackText.text = attack.ToString();
+        creatureHealthText.text = health.ToString();
+        creatureMaxHealthText.text = maxHealth.ToString();
+        creatureHealthSlider.value = ((float)health / (float)maxHealth);
+
+        if (!creatureCanvas.activeInHierarchy)
+        {
+            creatureCanvas.SetActive(true);
+        }
+    }
+
     private void PlaceCard(CardPlacePoint placementPoint)
     {
+        BattleController.instance.cardSelected = false;
+
         placementPoint.activeCard = this;
         assignedPlace = placementPoint;
 
@@ -188,6 +220,32 @@ public class Card : MonoBehaviour
         BattleController.instance.SpendPlayerMana(manaCost);
 
         SpawnCreature();
+    }
+
+    private bool PlaySpell(CardPlacePoint placementPoint)
+    {
+        foreach (Effect effect in cardSO.effects)
+        {
+            if (effect.OnUse(true, placementPoint, this))
+            {
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        BattleController.instance.cardSelected = false;
+
+        inHand = false;
+        isSelected = false;
+
+        controller.RemoveCardFromHand(this);
+
+        BattleController.instance.SpendPlayerMana(manaCost);
+
+        return true;
     }
 
     public void SpawnCreature()
@@ -204,18 +262,8 @@ public class Card : MonoBehaviour
         creatureObj.transform.parent = creatureSpawnPoint;
         creatureObj.transform.localPosition = Vector3.zero;
         anim = creatureObj.GetComponent<Animator>();
-    }
 
-    private void PlaySpell()
-    {
-        inHand = false;
-        isSelected = false;
-
-        controller.RemoveCardFromHand(this);
-
-        BattleController.instance.SpendPlayerMana(manaCost);
-
-        Destroy(gameObject);
+        UpdateCreatureCanvas();
     }
 
     public void DamageCard(int amount)
@@ -238,7 +286,44 @@ public class Card : MonoBehaviour
         }
 
         SetAnimTrigger("Hurt");
-        UpdateCardDisplay();
+        UpdateCreatureCanvas();
+    }
+
+    public void HealCard(int amount)
+    {
+        if (cardType == CardScriptableObject.Type.Spell)
+            return;
+
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+
+        UpdateCreatureCanvas();
+    }
+
+    public void BuffCard(int amountAttack, int amountHealth)
+    {
+        if (cardType == CardScriptableObject.Type.Spell)
+            return;
+
+        attack += amountAttack;
+        maxHealth += amountHealth;
+        health = Mathf.Clamp(health + amountHealth, 0, maxHealth);
+
+        UpdateCreatureCanvas();
+    }
+
+    public void DebuffCard(int amountAttack, int amountHealth)
+    {
+        BuffCard(-amountAttack, -amountHealth);
+    }
+
+    public void ReduceManaCost(int amount)
+    {
+        manaCost -= amount;
+    }
+
+    public void ResetManaCost()
+    {
+        manaCost = originalManaCost;
     }
 
     public void MoveToPoint(Vector3 newPos, Quaternion newRot)
@@ -255,7 +340,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (inHand && isPlayer && !BattleController.instance.battleEnded)
+        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions() && !BattleController.instance.cardSelected)
         {
             MoveToPoint(controller.GetCardPositionX(handPosition) + new Vector3(0f, 0.2f, 0f), Quaternion.Euler(0, 0, 0));
         }
@@ -263,7 +348,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (inHand && isPlayer && !BattleController.instance.battleEnded)
+        if (inHand && isPlayer && !BattleController.instance.battleEnded && !BattleController.instance.cardSelected)
         {
             MoveToPoint(controller.cardPositions[handPosition], controller.cardRotations[handPosition]);
         }
@@ -271,16 +356,18 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions())
+        if (inHand && isPlayer && !BattleController.instance.battleEnded && BattleController.instance.CanPerformActions() && !BattleController.instance.cardSelected)
         {
             justPressed = true;
             isSelected = true;
             col.enabled = false;
+            BattleController.instance.cardSelected = true;
         }
     }
     
     public void ReturnToHand()
     {
+        BattleController.instance.cardSelected = false;
         isSelected = false;
         col.enabled = true;
 
