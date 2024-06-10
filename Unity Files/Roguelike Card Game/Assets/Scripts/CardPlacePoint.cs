@@ -12,7 +12,9 @@ public class CardPlacePoint : MonoBehaviour
     //Daniel's code
     private Card testCard;
     public CinemachineVirtualCamera pairedCamera;
-    private static float cameraFocusTime = 2f;
+    public CinemachineVirtualCamera battleCamera;
+    private static float cameraFocusTime = 3f;
+    List<string> playedCards = new List<string>();
    
 
     private void Start()
@@ -24,10 +26,19 @@ public class CardPlacePoint : MonoBehaviour
 
     private void Update()
     {
+
         if (activeCard != testCard)
         {
-            Redo();
-            SwitchCamera();
+            if (playedCards.Contains(activeCard.name))
+            {
+                Redo();
+            }
+            else
+            {
+                playedCards.Add(activeCard.name);
+                Redo();
+                SwitchCamera();
+            }
         }
     }
 
@@ -44,10 +55,16 @@ public class CardPlacePoint : MonoBehaviour
 
     }
 
-    private void CameraOff()
+    public void CameraOff()
     {
         BattleController.instance.cameraMoving = false;
         pairedCamera.Priority = 0;
+        battleCamera.Priority = 0;
+    }
+
+    public void BattleCamSwitch()
+    {
+        battleCamera.Priority = 20;
     }
 
 }
