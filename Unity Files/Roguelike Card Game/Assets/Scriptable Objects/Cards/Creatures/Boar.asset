@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
-  m_Name: Tree
+  m_Name: Boar
   m_EditorClassIdentifier: 
-  cardName: 'Tree '
-  description: The Creature is not affected by any stat changes.
-  manaCost: 4
-  health: 35
-  attack: 16
+  cardName: Boar
+  description: Draw 2 cards upon it killing a creature in the enemy lane.
+  manaCost: 2
+  health: 22
+  attack: 10
   cardType: 0
-  creatureModel: {fileID: 3724572471564977762, guid: 3869ca982ead0c54688e41291e691359,
+  creatureModel: {fileID: 28950525561907259, guid: 6c3cc767dc0bff44181c7ef24cb8eaf6,
     type: 3}
   effects: []
