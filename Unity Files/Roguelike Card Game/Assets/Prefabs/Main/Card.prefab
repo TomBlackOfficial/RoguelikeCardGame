@@ -1187,6 +1187,15 @@ MonoBehaviour:
   creatureMaxHealthText: {fileID: 3511574995305142057}
   creatureHealthSlider: {fileID: 3073776853381570617}
   assignedPlace: {fileID: 0}
+  cardPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!65 &141992797556105894
 BoxCollider:
   m_ObjectHideFlags: 0
