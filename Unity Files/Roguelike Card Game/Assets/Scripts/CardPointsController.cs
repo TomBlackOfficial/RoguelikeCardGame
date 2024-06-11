@@ -28,7 +28,7 @@ public class CardPointsController : MonoBehaviour
         {
             if (playerCardPoints[i].activeCard != null)
             {
-                playerCardPoints[i].SwitchCamera();
+                playerCardPoints[i].BattleCamSwitch();
 
                 yield return new WaitForSeconds(timeBetweenAttacks);
 
@@ -50,6 +50,9 @@ public class CardPointsController : MonoBehaviour
             {
                 i = playerCardPoints.Length;
             }
+
+            yield return new WaitForSeconds(1);
+            playerCardPoints[i].CameraOff();
         }
 
         CheckAssignedCards();
@@ -70,7 +73,7 @@ public class CardPointsController : MonoBehaviour
         {
             if (enemyCardPoints[i].activeCard != null)
             {
-                enemyCardPoints[i].SwitchCamera();
+                enemyCardPoints[i].BattleCamSwitch();
 
                 yield return new WaitForSeconds(timeBetweenAttacks);
 
@@ -92,6 +95,9 @@ public class CardPointsController : MonoBehaviour
             {
                 i = enemyCardPoints.Length;
             }
+
+            yield return new WaitForSeconds(1);
+            enemyCardPoints[i].CameraOff();
         }
 
         CheckAssignedCards();
