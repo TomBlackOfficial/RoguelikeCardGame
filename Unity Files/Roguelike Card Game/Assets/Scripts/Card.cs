@@ -334,7 +334,9 @@ public class Card : MonoBehaviour
         if (cardType == CardScriptableObject.Type.Spell)
             return;
 
+        // Take damage
         health -= amount;
+
         if (health <= 0)
         {
             health = 0;

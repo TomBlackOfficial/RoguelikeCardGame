@@ -32,6 +32,7 @@ public class CardPointsController : MonoBehaviour
 
                 yield return new WaitForSeconds(timeBetweenAttacks);
 
+                // Player creature attacks opposing lane
                 playerCardPoints[i].activeCard.SetAnimTrigger("Attack");
 
                 if (enemyCardPoints[i].activeCard != null)
@@ -73,6 +74,7 @@ public class CardPointsController : MonoBehaviour
 
                 yield return new WaitForSeconds(timeBetweenAttacks);
 
+                // Enemy creature attacks opposing lane
                 enemyCardPoints[i].activeCard.SetAnimTrigger("Attack");
 
                 if (playerCardPoints[i].activeCard != null)
