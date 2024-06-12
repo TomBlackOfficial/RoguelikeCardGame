@@ -251,6 +251,19 @@ public class BattleController : MonoBehaviour
         StartCoroutine(ShowResultCoroutine(isWin));
     }
 
+    public void BuyExtraCards()
+    {
+        if (playerMana >= 2)
+        {
+            DeckController.instance.DrawCardToHand();
+            SpendPlayerMana(2);
+        }
+        else
+        {
+            BattleUIController.instance.ShowWarning(Card.WARNING_MANA);
+        }
+    }
+
     IEnumerator ShowResultCoroutine(bool isWin)
     {
         yield return new WaitForSeconds(0.5f);

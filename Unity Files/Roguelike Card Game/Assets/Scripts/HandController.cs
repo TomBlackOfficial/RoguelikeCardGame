@@ -32,7 +32,7 @@ public class HandController : MonoBehaviour
 
         for (int i = 0; i < heldCards.Count; i++)
         {
-            float newXPos = spawnPoint.position.x + ((i * (offset.x - (heldCards.Count * 0.008f))) - (heldCards.Count - 1) * ((offset.x - (heldCards.Count * 0.008f)) * 0.5f));
+            float newXPos = spawnPoint.position.x + ((i * (offset.x - (heldCards.Count * 0.01f))) - (heldCards.Count - 1) * ((offset.x - (heldCards.Count * 0.01f)) * 0.5f));
             float newYPos = spawnPoint.position.y + (i * offset.y);
             float newZPos = spawnPoint.position.z + (Mathf.Abs(spawnPoint.position.x - newXPos) * offset.z);
 

@@ -19,6 +19,7 @@ public class BattleUIController : MonoBehaviour
     [SerializeField] private Slider enemyHealthSlider;
     [SerializeField] private Popup popupWarning;
     [SerializeField] private Button endTurnButton;
+    [SerializeField] private Button drawCardButton;
     [SerializeField] private GameObject battleWinScreen;
     [SerializeField] private GameObject battleLoseScreen;
 
@@ -43,6 +44,11 @@ public class BattleUIController : MonoBehaviour
         }
     }
 
+    public void DrawCards()
+    {
+        BattleController.instance.BuyExtraCards();
+    }
+
     public void EndPlayerTurn()
     {
         BattleController.instance.EndPlayerTurn();
@@ -50,6 +56,7 @@ public class BattleUIController : MonoBehaviour
 
     public void UpdatePlayerActionUI(bool isActive)
     {
+        drawCardButton.interactable = isActive;
         endTurnButton.interactable = isActive;
     }
 

@@ -46,12 +46,8 @@ public class CardPointsController : MonoBehaviour
                 }
             }
 
-            if (BattleController.instance.battleEnded)
-            {
-                i = playerCardPoints.Length;
-            }
-
             yield return new WaitForSeconds(1);
+
             playerCardPoints[i].CameraOff();
         }
 

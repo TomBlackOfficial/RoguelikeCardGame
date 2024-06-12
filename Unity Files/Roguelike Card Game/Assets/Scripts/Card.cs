@@ -6,8 +6,8 @@ using TMPro;
 
 public class Card : MonoBehaviour
 {
-    private static string WARNING_MANA = "Not enough Mana to perform this action.";
-    private static string WARNING_OCCUPIED = "This land is occupied by another creature.";
+    public static string WARNING_MANA = "Not enough Mana to perform this action.";
+    public static string WARNING_OCCUPIED = "This land is occupied by another creature.";
 
     public CardScriptableObject cardSO;
 
@@ -29,10 +29,16 @@ public class Card : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask placementMask;
 
+    [Header("Materials")]
+    [SerializeField] private Material creatureCardMat;
+    [SerializeField] private Material spellCardMat;
+
     [Header("Assign")]
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private GameObject healthIcon;
     [SerializeField] private TMP_Text healthText;
+    [SerializeField] private GameObject attackIcon;
     [SerializeField] private TMP_Text attackText;
     [SerializeField] private TMP_Text costText;
     [SerializeField] private TMP_Text cardTypeText;
@@ -43,6 +49,7 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text creatureHealthText;
     [SerializeField] private TMP_Text creatureMaxHealthText;
     [SerializeField] private Slider creatureHealthSlider;
+    [SerializeField] private MeshRenderer cardModel;
 
     [HideInInspector] public CardPlacePoint assignedPlace;
 
@@ -53,6 +60,7 @@ public class Card : MonoBehaviour
     private HandController controller;
     private Collider col;
     private GameObject creatureObj;
+
 
     private Vector3 targetPos;
     private Quaternion targetRot;
@@ -84,62 +92,70 @@ public class Card : MonoBehaviour
 
         if (isSelected)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f, groundMask))
+            if (!BattleController.instance.CanPerformActions())
             {
-                MoveToPoint(hit.point + new Vector3(0f, 0.05f, 0f), Quaternion.identity);
+                ReturnToHand();
+                isSelected = false;
             }
-
-            if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded)
+            else
             {
-                if (Physics.Raycast(ray, out hit, 100f, placementMask) && BattleController.instance.CanPerformActions())
-                {
-                    CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                    if (BattleController.instance.playerMana >= manaCost)
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100f, groundMask))
+                {
+                    MoveToPoint(hit.point + new Vector3(0f, 0.05f, 0f), Quaternion.identity);
+                }
+
+                if (Input.GetMouseButtonDown(0) && justPressed == false && !BattleController.instance.battleEnded)
+                {
+                    if (Physics.Raycast(ray, out hit, 100f, placementMask) && BattleController.instance.CanPerformActions())
                     {
-                        if (cardType == CardScriptableObject.Type.Spell)
+                        CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
+
+                        if (BattleController.instance.playerMana >= manaCost)
                         {
-                            if (PlaySpell(selectedPoint))
+                            if (cardType == CardScriptableObject.Type.Spell)
                             {
-                                Destroy(gameObject);
+                                if (PlaySpell(selectedPoint))
+                                {
+                                    Destroy(gameObject);
+                                }
+                                else
+                                {
+                                    ReturnToHand();
+                                }
                             }
                             else
                             {
-                                ReturnToHand();
+                                if (selectedPoint.activeCard == null && selectedPoint.isPlayerPoint)
+                                {
+                                    PlaceCard(selectedPoint);
+                                }
+                                else
+                                {
+                                    ReturnToHand();
+                                    BattleUIController.instance.ShowWarning(WARNING_OCCUPIED);
+                                }
                             }
                         }
                         else
                         {
-                            if (selectedPoint.activeCard == null && selectedPoint.isPlayerPoint)
-                            {
-                                PlaceCard(selectedPoint);
-                            }
-                            else
-                            {
-                                ReturnToHand();
-                                BattleUIController.instance.ShowWarning(WARNING_OCCUPIED);
-                            }
+                            ReturnToHand();
+                            BattleUIController.instance.ShowWarning(WARNING_MANA);
                         }
                     }
                     else
                     {
+                        // Player didn't click on any placement point or it's not their action turn
                         ReturnToHand();
-                        BattleUIController.instance.ShowWarning(WARNING_MANA);
                     }
                 }
-                else
+
+                if (Input.GetMouseButtonDown(1) && !BattleController.instance.battleEnded)
                 {
-                    // Player didn't click on any placement point or it's not their action turn
                     ReturnToHand();
                 }
-            }
-
-            if (Input.GetMouseButtonDown(1) && !BattleController.instance.battleEnded)
-            {
-                ReturnToHand();
             }
         }
 
@@ -175,19 +191,29 @@ public class Card : MonoBehaviour
 
     public void UpdateCardDisplay()
     {
+        Material[] newMats = cardModel.materials;
+
         switch (cardType)
         {
             case CardScriptableObject.Type.Creature:
+                healthIcon.SetActive(true);
                 healthText.text = health.ToString();
+                attackIcon.SetActive(true);
                 attackText.text = attack.ToString();
                 cardTypeText.text = "Creature";
+                newMats[1] = creatureCardMat;
                 break;
             case CardScriptableObject.Type.Spell:
+                healthIcon.SetActive(false);
                 healthText.text = "";
+                attackIcon.SetActive(false);
                 attackText.text = "";
                 cardTypeText.text = "Spell";
+                newMats[1] = spellCardMat;
                 break;
         }
+
+        cardModel.materials = newMats;
 
         costText.text = manaCost.ToString();
     }
@@ -280,7 +306,11 @@ public class Card : MonoBehaviour
         Texture2D creatureTexture2D = creatureMaterial.mainTexture as Texture2D;
         //creatureMaterial.SetFloat("_CuttOffHeight", 0.2f);
 
-        float startValue = -0.5f;
+        creatureObj.transform.parent = creatureSpawnPoint;
+        creatureObj.transform.localPosition = Vector3.zero;
+        anim = creatureObj.GetComponent<Animator>();
+
+        float startValue = -0.35f;
         float endValue = 1.0f;
         float duration = 3.0f;
         float elapsedTime = 0.0f;
@@ -295,10 +325,6 @@ public class Card : MonoBehaviour
         }
 
         creatureMaterial.SetFloat("_CuttOffHeight", endValue);
-        
-        creatureObj.transform.parent = creatureSpawnPoint;
-        creatureObj.transform.localPosition = Vector3.zero;
-        anim = creatureObj.GetComponent<Animator>();
 
         UpdateCreatureCanvas();
     }
