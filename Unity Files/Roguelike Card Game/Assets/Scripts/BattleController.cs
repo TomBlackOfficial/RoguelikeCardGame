@@ -161,14 +161,14 @@ public class BattleController : MonoBehaviour
 
             case TurnOrder.enemyActive:
 
+                FillEnemyMana();
+
+                EnemyController.instance.StartAction();
+
                 if (currentEnemyMaxMana < maxMana)
                 {
                     currentEnemyMaxMana++;
                 }
-
-                FillEnemyMana();
-
-                EnemyController.instance.StartAction();
 
                 break;
 

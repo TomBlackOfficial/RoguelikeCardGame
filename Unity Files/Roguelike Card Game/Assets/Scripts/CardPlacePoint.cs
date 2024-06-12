@@ -26,20 +26,23 @@ public class CardPlacePoint : MonoBehaviour
 
     private void Update()
     {
-
-        if (activeCard != testCard)
+        if (activeCard != null)
         {
-            if (playedCards.Contains(activeCard.name))
+            if (activeCard != testCard)
             {
-                Redo();
-            }
-            else
-            {
-                playedCards.Add(activeCard.name);
-                Redo();
-                SwitchCamera();
+                if (playedCards.Contains(activeCard.name))
+                {
+                    Redo();
+                }
+                else
+                {
+                    playedCards.Add(activeCard.name);
+                    Redo();
+                    SwitchCamera();
+                }
             }
         }
+        
     }
 
     private void Redo()
