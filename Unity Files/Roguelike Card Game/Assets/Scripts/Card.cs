@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class Card : MonoBehaviour
 {
@@ -43,6 +44,9 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text creatureHealthText;
     [SerializeField] private TMP_Text creatureMaxHealthText;
     [SerializeField] private Slider creatureHealthSlider;
+    [SerializeField] private GameObject creatureonCardSpawnGO;
+    
+    private GameObject creatureObj2;
 
     [HideInInspector] public CardPlacePoint assignedPlace;
 
@@ -81,7 +85,6 @@ public class Card : MonoBehaviour
     {
         transform.position = Vector3.Lerp(transform.position, targetPos, moveSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
-
         if (isSelected)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -171,6 +174,10 @@ public class Card : MonoBehaviour
 
         nameText.text = cardSO.cardName;
         descriptionText.text = cardSO.description;
+        if (cardType == CardScriptableObject.Type.Creature)
+        {
+            CreatureSpawnOnCard();
+        }
     }
 
     public void UpdateCardDisplay()
@@ -188,10 +195,21 @@ public class Card : MonoBehaviour
                 cardTypeText.text = "Spell";
                 break;
         }
-
         costText.text = manaCost.ToString();
     }
 
+    public void CreatureSpawnOnCard()
+    {
+        creatureObj2 = Instantiate(cardSO.creatureModel, creatureonCardSpawnGO.transform.position, creatureonCardSpawnGO.transform.rotation);
+        creatureObj2.transform.parent = creatureonCardSpawnGO.transform;
+        creatureObj2.transform.localPosition = Vector3.zero;
+        creatureObj2.transform.localScale = creatureonCardSpawnGO.transform.localScale;
+        if (creatureonCardSpawnGO.transform.childCount > 0)
+        {
+            creatureonCardSpawnGO.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
+    
     public void UpdateCreatureCanvas()
     {
         creatureAttackText.text = attack.ToString();
@@ -216,7 +234,6 @@ public class Card : MonoBehaviour
 
         inHand = false;
         isSelected = false;
-
         controller.RemoveCardFromHand(this);
 
         BattleController.instance.SpendPlayerMana(manaCost);
@@ -272,8 +289,9 @@ public class Card : MonoBehaviour
         //
         // UpdateCreatureCanvas();
         yield return new WaitForSeconds(0.2f);
-
+        
         cardMesh.SetActive(false);
+        creatureonCardSpawnGO.SetActive(false);
         creatureObj = Instantiate(cardSO.creatureModel, creatureSpawnPoint.position, creatureSpawnPoint.rotation);
         Renderer creatureRenderer = creatureObj.GetComponentInChildren<Renderer>();
         Material creatureMaterial = creatureRenderer.sharedMaterial;

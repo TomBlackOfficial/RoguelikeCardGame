@@ -736,6 +736,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 746173786238106662, guid: f4c1470361e95ec428b9b64adcf7be35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1110951836232034184, guid: f4c1470361e95ec428b9b64adcf7be35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -791,6 +796,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6590258203101362768, guid: f4c1470361e95ec428b9b64adcf7be35,
+        type: 3}
+      propertyPath: creatureSpawnLocation
+      value: 
+      objectReference: {fileID: 1057176259}
+    - target: {fileID: 6590258203101362768, guid: f4c1470361e95ec428b9b64adcf7be35,
+        type: 3}
+      propertyPath: creatureonCardSpawnGO
+      value: 
+      objectReference: {fileID: 1819124206}
+    - target: {fileID: 6590258203101362768, guid: f4c1470361e95ec428b9b64adcf7be35,
+        type: 3}
+      propertyPath: creatureonCardSpawnLocation
+      value: 
+      objectReference: {fileID: 1819124206}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1955,6 +1975,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898064645}
   m_CullTransparentMesh: 1
+--- !u!4 &1057176259 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 746173786237804550, guid: f4c1470361e95ec428b9b64adcf7be35,
+    type: 3}
+  m_PrefabInstance: {fileID: 427718354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1201265964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3017740063921819868, guid: d361c85373d6e384aaeb374eb2acb00b,
@@ -2517,6 +2543,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1819124206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1428369958092631644, guid: f4c1470361e95ec428b9b64adcf7be35,
+    type: 3}
+  m_PrefabInstance: {fileID: 427718354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1831711321
 GameObject:
   m_ObjectHideFlags: 3
