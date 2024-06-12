@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d5b17bd04650646adc3f497c796fbb, type: 3}
   m_Name: Earth Elemental
   m_EditorClassIdentifier: 
-  cardName: Golem
+  cardName: Earth Golem
   description: This creature increases the HP of all friendly creatures on the board
     by +3.
-  manaCost: 4
-  health: 24
-  attack: 14
+  manaCost: 3
+  health: 22
+  attack: 13
   cardType: 0
   creatureModel: {fileID: 1976535029654758083, guid: c5bcdd01ab4f36e4cae16265919c0412,
     type: 3}

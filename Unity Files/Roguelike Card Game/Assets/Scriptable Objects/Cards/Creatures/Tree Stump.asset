@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Tree Stump
   description: The creatire heals it own hp by +2 every turn.
-  manaCost: 4
+  manaCost: 3
   health: 24
   attack: 15
   cardType: 0

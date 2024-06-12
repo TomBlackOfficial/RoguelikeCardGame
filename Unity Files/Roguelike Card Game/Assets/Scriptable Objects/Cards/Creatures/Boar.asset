@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boar
   m_EditorClassIdentifier: 
   cardName: Boar
-  description: Draw 2 cards upon it killing a creature in the enemy lane.
+  description: This card spawns a Boar.
   manaCost: 2
   health: 22
   attack: 10

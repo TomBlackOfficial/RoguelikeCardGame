@@ -15,8 +15,8 @@ MonoBehaviour:
   cardName: Spit-Fire
   description: Decrease attack power of the creature in the opposing lane by -2.
   manaCost: 1
-  health: 14
-  attack: 6
+  health: 16
+  attack: 7
   cardType: 0
   creatureModel: {fileID: 6691946198352669137, guid: 8b7c745f67259254cbab02a7b3501af1,
     type: 3}
