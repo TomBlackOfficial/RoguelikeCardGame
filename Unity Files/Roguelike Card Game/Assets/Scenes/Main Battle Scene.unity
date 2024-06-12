@@ -512,12 +512,12 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 434bb29d4a3d1794e9e8c9f5def0887d, type: 2}
+      objectReference: {fileID: 2100000, guid: fa5bd9fda8c04bc42b2bf0c0b6560807, type: 2}
     - target: {fileID: 7339356831882890532, guid: de82152322fc62a4ea5e07de14ce8ff2,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 434bb29d4a3d1794e9e8c9f5def0887d, type: 2}
+      objectReference: {fileID: 2100000, guid: fa5bd9fda8c04bc42b2bf0c0b6560807, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3381,7 +3381,7 @@ PrefabInstance:
     - target: {fileID: 5752037926357890023, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
         type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6217374875064787609, guid: e57b7b87f0b9c154bac1262cb1eb7d1b,
         type: 3}
