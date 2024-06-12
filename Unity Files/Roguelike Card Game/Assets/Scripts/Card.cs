@@ -11,6 +11,8 @@ public class Card : MonoBehaviour
 
     public CardScriptableObject cardSO;
 
+    public Material HologramDissolve;
+
     public int health { private set; get; }
     public int maxHealth { private set; get; }
     public int attack { private set; get; }
@@ -255,10 +257,45 @@ public class Card : MonoBehaviour
 
     IEnumerator SpawnCreatureCoroutine()
     {
+        // yield return new WaitForSeconds(0.2f);
+        //
+        // cardMesh.SetActive(false);
+        // creatureObj = Instantiate(cardSO.creatureModel, creatureSpawnPoint.position, creatureSpawnPoint.rotation);
+        // Renderer creatureRenderer = creatureObj.GetComponentInChildren<Renderer>();
+        // Material creatureMaterial = creatureRenderer.sharedMaterial;
+        // Texture2D creatureTexture2D = creatureMaterial.mainTexture as Texture2D;
+        // HologramDissolve.mainTexture = creatureTexture2D;
+        // creatureObj.GetComponentInChildren<Renderer>().material = HologramDissolve;
+        // creatureObj.transform.parent = creatureSpawnPoint;
+        // creatureObj.transform.localPosition = Vector3.zero;
+        // anim = creatureObj.GetComponent<Animator>();
+        //
+        // UpdateCreatureCanvas();
         yield return new WaitForSeconds(0.2f);
 
         cardMesh.SetActive(false);
         creatureObj = Instantiate(cardSO.creatureModel, creatureSpawnPoint.position, creatureSpawnPoint.rotation);
+        Renderer creatureRenderer = creatureObj.GetComponentInChildren<Renderer>();
+        Material creatureMaterial = creatureRenderer.sharedMaterial;
+        Texture2D creatureTexture2D = creatureMaterial.mainTexture as Texture2D;
+        //creatureMaterial.SetFloat("_CuttOffHeight", 0.2f);
+
+        float startValue = -0.5f;
+        float endValue = 1.0f;
+        float duration = 3.0f;
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            float lerpValue = Mathf.Lerp(startValue, endValue, t);
+            creatureMaterial.SetFloat("_CuttOffHeight", lerpValue);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        creatureMaterial.SetFloat("_CuttOffHeight", endValue);
+        
         creatureObj.transform.parent = creatureSpawnPoint;
         creatureObj.transform.localPosition = Vector3.zero;
         anim = creatureObj.GetComponent<Animator>();
