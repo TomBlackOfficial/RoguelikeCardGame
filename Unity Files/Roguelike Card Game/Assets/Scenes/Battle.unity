@@ -871,6 +871,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6590258203101362768, guid: 17f25c8794375694da96037a40d13a05,
+        type: 3}
+      propertyPath: HologramDissolve
+      value: 
+      objectReference: {fileID: 2100000, guid: c5dc8f674eea7bb45b743aca181a344c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
