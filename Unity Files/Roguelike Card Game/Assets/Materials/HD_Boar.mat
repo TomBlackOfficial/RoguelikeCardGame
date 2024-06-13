@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HD_Devil_Tree
+  m_Name: HD_Boar
   m_Shader: {fileID: -6465566751694194690, guid: ffcb62f1fecb7424495dcfdcec324720,
     type: 3}
   m_Parent: {fileID: 2100000, guid: c5dc8f674eea7bb45b743aca181a344c, type: 2}
@@ -39,16 +39,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 34adc6f7120558c46809094f7b6e49f1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0ccdaac6a4a93f64994672722942414f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _CuttOffHeight: 1
     - _EdgeWidth: 0.01
+    - _FresnelIntensity: 35.79
+    - _FresnelRadius: 15.2
+    - _MainTextureIntensity: 0.5
     - _Speed: 0.025
     m_Colors:
     - _FresnelColor: {r: 1, g: 0.16862746, b: 0, a: 1}
-    - _ScanLineTiling: {r: 50, g: 50, b: 0, a: 0}
+    - _ScanLineTiling: {r: 25, g: 25, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

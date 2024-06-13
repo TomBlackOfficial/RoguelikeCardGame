@@ -45,6 +45,8 @@ public class BattleController : MonoBehaviour
     public bool battleEnded { private set; get; }
     public bool cameraMoving { set; get; }
     public bool cardSelected { set; get; }
+    
+    private CreatureAudioManager creatureAudioManager;
 
     private void Awake()
     {
@@ -66,6 +68,8 @@ public class BattleController : MonoBehaviour
         FillEnemyMana();
 
         DeckController.instance.DrawMultipleCards(startingCards);
+        
+        creatureAudioManager = CreatureAudioManager.instance;
     }
 
     private void Update()

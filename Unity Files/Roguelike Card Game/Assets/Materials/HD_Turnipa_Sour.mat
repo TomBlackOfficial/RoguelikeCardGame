@@ -46,8 +46,11 @@ Material:
     m_Floats:
     - _CuttOffHeight: 1
     - _EdgeWidth: 0.01
+    - _FresnelIntensity: 9.2
+    - _MainTextureIntensity: 0.35
     - _Speed: 0.025
     m_Colors:
+    - _FresnelColor: {r: 1, g: 0.16862746, b: 0, a: 1}
     - _ScanLineTiling: {r: 10, g: 10, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

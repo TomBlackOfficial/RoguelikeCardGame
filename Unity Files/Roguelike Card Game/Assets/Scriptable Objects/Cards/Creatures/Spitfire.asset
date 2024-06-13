@@ -21,3 +21,8 @@ MonoBehaviour:
   creatureModel: {fileID: 6691946198352669137, guid: 8b7c745f67259254cbab02a7b3501af1,
     type: 3}
   effects: []
+  creatureState: 0
+  SpawnClip: {fileID: 8300000, guid: 1635982ff41265344a35541c44d470e7, type: 3}
+  AttackClip: {fileID: 8300000, guid: 17d6c072e2473774d89f1ecfef7c9df7, type: 3}
+  TakingDamageClip: {fileID: 8300000, guid: 915c83eaf865ed740ac103ba951a2089, type: 3}
+  DeathClip: {fileID: 8300000, guid: f97eb049e8d93b04daccf316bbd222e5, type: 3}

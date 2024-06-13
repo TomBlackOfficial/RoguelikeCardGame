@@ -11,7 +11,7 @@ public class Card : MonoBehaviour
 
     public CardScriptableObject cardSO;
 
-    public Material HologramDissolve;
+    private CreatureAudioManager creatureAudioManager;
 
     public int health { private set; get; }
     public int maxHealth { private set; get; }
@@ -70,6 +70,7 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
+        creatureAudioManager = CreatureAudioManager.instance;
         controller = HandController.instance;
         col = GetComponent<Collider>();
 
@@ -298,6 +299,7 @@ public class Card : MonoBehaviour
         //
         // UpdateCreatureCanvas();
         yield return new WaitForSeconds(0.2f);
+        creatureAudioManager.PlayCreatureSound(cardSO, "Spawn");
 
         cardMesh.SetActive(false);
         creatureObj = Instantiate(cardSO.creatureModel, creatureSpawnPoint.position, creatureSpawnPoint.rotation);
@@ -342,13 +344,16 @@ public class Card : MonoBehaviour
             assignedPlace.activeCard = null;
 
             //MoveToPoint(BattleController.instance.discardPoint.position, BattleController.instance.discardPoint.rotation);
-
+            creatureAudioManager.PlayCreatureSound(cardSO, "Death");
             SetAnimTrigger("Die");
 
             Destroy(gameObject, 1f);
         }
-
+        
         SetAnimTrigger("Hurt");
+        creatureAudioManager.PlayCreatureSound(cardSO, "Damage");
+        
+        
         UpdateCreatureCanvas();
     }
 

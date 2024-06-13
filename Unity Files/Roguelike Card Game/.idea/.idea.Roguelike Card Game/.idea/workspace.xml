@@ -9,6 +9,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Jay/DissolveEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CreatureAudioManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,6 +86,7 @@
       <workItem from="1717392982545" duration="1804000" />
       <workItem from="1717531106586" duration="14000" />
       <workItem from="1717531132675" duration="8631000" />
+      <workItem from="1718249431618" duration="4278000" />
     </task>
     <servers />
   </component>
