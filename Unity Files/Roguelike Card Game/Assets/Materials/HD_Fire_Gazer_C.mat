@@ -44,7 +44,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CuttOffHeight: 0.52805793
+    - _CuttOffHeight: 1
     - _EdgeWidth: 0.01
     - _Speed: 0.025
     m_Colors:
