@@ -3021,6 +3021,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fab639f5991b749b7cbdde64597091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1715828234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6627281929251787652, guid: 2ad661c72678d474baeb50c08b13b4b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1971055306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1787965951 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7548662599678678805, guid: c7e3f00cdd921be42af9d69b79b9eb6a,
@@ -3201,6 +3207,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5164031429336946388, guid: 2ad661c72678d474baeb50c08b13b4b0,
+        type: 3}
+      propertyPath: m_Name
+      value: CreatureCardModel
+      objectReference: {fileID: 0}
     - target: {fileID: 5581969944264855146, guid: 2ad661c72678d474baeb50c08b13b4b0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3223,6 +3234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5750524184334929418, guid: 2ad661c72678d474baeb50c08b13b4b0,
         type: 3}
+      propertyPath: m_Name
+      value: SpellCardModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750524184334929418, guid: 2ad661c72678d474baeb50c08b13b4b0,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -3230,7 +3246,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cardMesh
       value: 
-      objectReference: {fileID: 364569338}
+      objectReference: {fileID: 1715828234}
     - target: {fileID: 7246378468025878128, guid: 2ad661c72678d474baeb50c08b13b4b0,
         type: 3}
       propertyPath: cardModel
@@ -3246,6 +3262,11 @@ PrefabInstance:
       propertyPath: cardModelSpell
       value: 
       objectReference: {fileID: 255646314}
+    - target: {fileID: 7246378468025878128, guid: 2ad661c72678d474baeb50c08b13b4b0,
+        type: 3}
+      propertyPath: cardMeshCreature
+      value: 
+      objectReference: {fileID: 364569338}
     - target: {fileID: 7246378468025878128, guid: 2ad661c72678d474baeb50c08b13b4b0,
         type: 3}
       propertyPath: modelOnCardTransform

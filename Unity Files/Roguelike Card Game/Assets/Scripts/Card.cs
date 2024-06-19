@@ -44,6 +44,7 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text cardTypeText;
     [SerializeField] private Transform creatureSpawnPoint;
     [SerializeField] private GameObject cardMesh;
+    [SerializeField] private GameObject cardMeshCreature;
     [SerializeField] private GameObject cardMeshSpell;
     [SerializeField] private GameObject creatureCanvas;
     [SerializeField] private TMP_Text creatureAttackText;
@@ -216,7 +217,7 @@ public class Card : MonoBehaviour
                     
             case CardScriptableObject.Type.Creature:
                 newMats = cardModel.materials;
-                cardMesh.SetActive(true);
+                cardMeshCreature.SetActive(true);
                 cardMeshSpell.SetActive(false);
                 healthIcon.SetActive(true);
                 healthText.text = health.ToString();
@@ -229,7 +230,7 @@ public class Card : MonoBehaviour
                 break;
             case CardScriptableObject.Type.Spell:
                  newMats = cardModelSpell.materials;
-                cardMesh.SetActive(false);
+                cardMeshCreature.SetActive(false);
                 cardMeshSpell.SetActive(true);
                 healthIcon.SetActive(false);
                 healthText.text = "";
