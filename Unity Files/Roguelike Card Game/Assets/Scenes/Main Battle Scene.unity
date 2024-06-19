@@ -3684,10 +3684,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4607737547481422176, guid: 863673bf5711c644dad8529520d6da55,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b1af1fbf0ed58e4ab108153bd55c0da, type: 2}
     - target: {fileID: 5158935123107844510, guid: 863673bf5711c644dad8529520d6da55,
         type: 3}
       propertyPath: m_Name
       value: CardNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082472999414383069, guid: 863673bf5711c644dad8529520d6da55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9019269684171451402, guid: 863673bf5711c644dad8529520d6da55,
         type: 3}
