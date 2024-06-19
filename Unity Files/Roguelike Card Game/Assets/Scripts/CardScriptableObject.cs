@@ -36,6 +36,9 @@ public class CardScriptableObject : ScriptableObject
 
     [Space(10)]
     public GameObject creatureModel;
+    
+    [Space(10)]
+    public GameObject creatureOnCardModel;
 
     [Space(10)]
     public List<Effect> effects = new List<Effect>();

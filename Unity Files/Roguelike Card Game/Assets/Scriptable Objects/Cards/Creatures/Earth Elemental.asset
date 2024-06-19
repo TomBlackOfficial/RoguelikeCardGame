@@ -21,6 +21,8 @@ MonoBehaviour:
   cardType: 0
   creatureModel: {fileID: 1976535029654758083, guid: c5bcdd01ab4f36e4cae16265919c0412,
     type: 3}
+  creatureOnCardModel: {fileID: 1976535029654758083, guid: d03cf7bb7989f844a9c722ddd517c5f5,
+    type: 3}
   effects: []
   creatureState: 0
   SpawnClip: {fileID: 8300000, guid: 9e6fb84084c0df9489b1a8b300c06a19, type: 3}

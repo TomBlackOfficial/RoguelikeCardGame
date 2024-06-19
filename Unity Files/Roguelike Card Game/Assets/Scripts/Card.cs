@@ -44,12 +44,17 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text cardTypeText;
     [SerializeField] private Transform creatureSpawnPoint;
     [SerializeField] private GameObject cardMesh;
+    [SerializeField] private GameObject cardMeshSpell;
     [SerializeField] private GameObject creatureCanvas;
     [SerializeField] private TMP_Text creatureAttackText;
     [SerializeField] private TMP_Text creatureHealthText;
     [SerializeField] private TMP_Text creatureMaxHealthText;
     [SerializeField] private Slider creatureHealthSlider;
     [SerializeField] private MeshRenderer cardModel;
+    [SerializeField] private MeshRenderer cardModelSpell;
+    
+    [SerializeField] private Transform modelOnCardTransform;
+    private GameObject creatureObj2;
 
     [HideInInspector] public CardPlacePoint assignedPlace;
 
@@ -189,32 +194,54 @@ public class Card : MonoBehaviour
         nameText.text = cardSO.cardName;
         descriptionText.text = cardSO.description;
     }
+    
+    public void CreatureSpawnOnCard()
+    {
+        creatureObj2 = Instantiate(cardSO.creatureOnCardModel, modelOnCardTransform.transform.position, modelOnCardTransform.transform.rotation);
+        creatureObj2.transform.parent = modelOnCardTransform.transform;
+        creatureObj2.transform.localPosition = Vector3.zero;
+        creatureObj2.transform.localScale = modelOnCardTransform.transform.localScale;
+        if (modelOnCardTransform.transform.childCount > 0)
+        {
+            modelOnCardTransform.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
 
     public void UpdateCardDisplay()
     {
-        Material[] newMats = cardModel.materials;
+        Material[] newMats;
 
         switch (cardType)
         {
+                    
             case CardScriptableObject.Type.Creature:
+                newMats = cardModel.materials;
+                cardMesh.SetActive(true);
+                cardMeshSpell.SetActive(false);
                 healthIcon.SetActive(true);
                 healthText.text = health.ToString();
                 attackIcon.SetActive(true);
                 attackText.text = attack.ToString();
                 cardTypeText.text = "Creature";
                 newMats[1] = creatureCardMat;
+                CreatureSpawnOnCard();
+                cardModel.materials = newMats;
                 break;
             case CardScriptableObject.Type.Spell:
+                 newMats = cardModelSpell.materials;
+                cardMesh.SetActive(false);
+                cardMeshSpell.SetActive(true);
                 healthIcon.SetActive(false);
                 healthText.text = "";
                 attackIcon.SetActive(false);
                 attackText.text = "";
                 cardTypeText.text = "Spell";
                 newMats[1] = spellCardMat;
+                cardModelSpell.materials = newMats;
                 break;
         }
 
-        cardModel.materials = newMats;
+        
 
         costText.text = manaCost.ToString();
     }
